@@ -7,7 +7,6 @@ var clientKey = "YOUR_CLIENT_KEY";
 
 var ncmb = new NCMB(appKey,clientKey);
 
-
 //公開ファイルURL
 var publicFileUrl = "https://mb.api.cloud.nifty.com/2013-09-01/applications/" + applicationID + "/publicFiles/";
 
@@ -72,6 +71,7 @@ var currentShopId;
 
 function onRegisterBtn()
 {
+    //【mBaaS：会員管理③】ユーザー情報更新-
     //入力フォームからnickname, prefecture, genderを値セット
     var nickname = $("#reg_nickname").val();
     var prefecture = $("#reg_prefecture").val();
@@ -120,16 +120,17 @@ function onRegisterBtn()
 
 /* --------- 【mBaaS：会員管理①】会員登録用メールを要求する ------------ */
 function onSignupBtn() {
+    // 【mBaaS：会員管理①】会員登録用メールを要求する
     var mailaddress = $("#signup_mailaddress").val();
     ncmb.User.requestSignUpEmail(mailaddress)
          .then(function(data){
+            // 会員登録用メールの要求成功時の処理
             alert("リクエストを送信しました！メールをご確認ください。");
-            // 送信後処理
             $.mobile.changePage('#LoginPage');
          })
          .catch(function(err){
+            // 会員登録用メールの要求失敗時の処理
             alert("リクエスト失敗！次のエラー発生: " + err);
-           // エラー処理
            $.mobile.changePage('#LoginPage');
          });
 }
@@ -138,6 +139,7 @@ function onSignupBtn() {
 
 function onLoginBtn()
 {
+    //【mBaaS：会員管理②】メールアドレスとパスワードでログイン
     // 入力したメールアドレスの値
     var mailaddress = $("#login_mailaddress").val();
     // 入力したパスワードの値
@@ -178,9 +180,10 @@ function onLogoutBtn()
 }
 
 
-// 【mBaaS：ファイルストア②】Shop画像の取得
+/* --------- 【mBaaS：ファイルストア②】Shop画像の取得  ---------- */
 // 取得した「Shop」クラスデータからShop画面用の画像名を取得
 function showShopDetail(shopId) {
+    // 【mBaaS：ファイルストア②】Shop画像の取得
     //選択中のお店詳細
     currentShopId = shopId;
     var shopTmp = shopList[shopId];
@@ -292,6 +295,9 @@ function showFavorite() {
 
 
 function onUpdateFavoriteBtn() {
+
+    // 【mBaaS：会員管理④ユーザー情報の更新
+
     //ONを設定している項目を取得
     var array = [];
     $('[name=favorite_shop]').each(function() {
@@ -300,11 +306,11 @@ function onUpdateFavoriteBtn() {
             array.push(tmp);
         }
     });
-    // 【mBaaS：会員管理④】ユーザー情報の更新
 
     // ログイン中のユーザーの更新favoriteを設定
     currentLoginUser.favorite = array;
-    // ユーザー情報を更新
+
+// ユーザー情報を更新
     currentLoginUser.update()
                     .then(function(currentLoginUser) {
                         // 更新に成功した場合の処理
@@ -339,7 +345,7 @@ function onUpdateFavoriteBtn() {
 
 // 「お気に入り登録」ボタン押下時の処理
 function onFavoriteBtn() {
-    // 【mBaaS：会員管理④】ユーザー情報の更新
+    // 【mBaaS：会員管理⑤】ユーザー情報の更新
 
 　　// ログイン中のユーザーのお気に入り情報（favorite）を設定
     currentLoginUser.favorite.push(currentShopId);
