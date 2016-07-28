@@ -50,7 +50,6 @@ $(function() {
                     }
                 );
         	},20000);
-
         },false);
 });
 
@@ -67,8 +66,53 @@ var shopArray;
 //現在詳細ページを表示するお店
 var currentShopId;
 
-/* --------- 【mBaaS：会員管理③】ユーザー情報更新----------- */
 
+/* --------- 【mBaaS：会員管理①】会員登録用メールを要求する ------------ */
+function onSignupBtn() {
+    // 【mBaaS：会員管理①】会員登録用メールを要求する
+    var mailaddress = $("#signup_mailaddress").val();
+    ncmb.User.requestSignUpEmail(mailaddress)
+         .then(function(data){
+            // 会員登録用メールの要求成功時の処理
+            alert("リクエストを送信しました！メールをご確認ください。");
+            $.mobile.changePage('#LoginPage');
+         })
+         .catch(function(err){
+            // 会員登録用メールの要求失敗時の処理
+            alert("リクエスト失敗！次のエラー発生: " + err);
+           $.mobile.changePage('#LoginPage');
+         });
+}
+
+/* --------- 【mBaaS：会員管理②】メールアドレスとパスワードでログイン ----------- */
+function onLoginBtn()
+{
+    //【mBaaS：会員管理②】メールアドレスとパスワードでログイン
+    // 入力したメールアドレスの値
+    var mailaddress = $("#login_mailaddress").val();
+    // 入力したパスワードの値
+    var password = $("#login_password").val();
+
+    // メールアドレスとパスワードでログイン処理実施
+    ncmb.User.loginWithMailAddress(mailaddress, password)
+        .then(function(user) {
+            // ログイン成功時の処理
+            alert("ログイン成功");
+            currentLoginUser = ncmb.User.getCurrentUser();
+            if(currentLoginUser.nickname) {
+                showShopList();
+            } else {
+                // ユーザ情報登録画面遷移
+                $.mobile.changePage('#RegisterPage');
+            }
+        })
+        .catch(function(error) {
+            // ログイン失敗時の処理
+            alert("ログイン失敗！次のエラー発生: " + error);
+        });
+}
+
+/* --------- 【mBaaS：会員管理③】ユーザー情報更新----------- */
 function onRegisterBtn()
 {
     //【mBaaS：会員管理③】ユーザー情報更新-
@@ -115,72 +159,11 @@ function onRegisterBtn()
                         // 更新失敗時の処理
                         alert("会員情報登録に失敗！次のエラー発生：" + error);
                     });
-
-}
-
-/* --------- 【mBaaS：会員管理①】会員登録用メールを要求する ------------ */
-function onSignupBtn() {
-    // 【mBaaS：会員管理①】会員登録用メールを要求する
-    var mailaddress = $("#signup_mailaddress").val();
-    ncmb.User.requestSignUpEmail(mailaddress)
-         .then(function(data){
-            // 会員登録用メールの要求成功時の処理
-            alert("リクエストを送信しました！メールをご確認ください。");
-            $.mobile.changePage('#LoginPage');
-         })
-         .catch(function(err){
-            // 会員登録用メールの要求失敗時の処理
-            alert("リクエスト失敗！次のエラー発生: " + err);
-           $.mobile.changePage('#LoginPage');
-         });
-}
-
-/* --------- 【mBaaS：会員管理②】メールアドレスとパスワードでログイン ----------- */
-
-function onLoginBtn()
-{
-    //【mBaaS：会員管理②】メールアドレスとパスワードでログイン
-    // 入力したメールアドレスの値
-    var mailaddress = $("#login_mailaddress").val();
-    // 入力したパスワードの値
-    var password = $("#login_password").val();
-
-    // メールアドレスとパスワードでログイン処理実施
-    ncmb.User.loginWithMailAddress(mailaddress, password)
-        .then(function(user) {
-            // ログイン成功時の処理
-            alert("ログイン成功");
-            currentLoginUser = ncmb.User.getCurrentUser();
-            if(currentLoginUser.nickname) {
-                showShopList();
-            } else {
-                // ユーザ情報登録画面遷移
-                $.mobile.changePage('#RegisterPage');
-            }
-        })
-        .catch(function(error) {
-            // ログイン失敗時の処理
-            alert("ログイン失敗！次のエラー発生: " + error);
-        });
-}
-
-function onLogoutBtn()
-{
-    //ログアウト処理実施
-    ncmb.User.logout();
-
-    //ログイン中ユーザをリセット
-    currentLoginUser = null;
-
-    //処理結果を表示
-    alert('ログアウト成功');
-
-    //ログインページに移動
-    $.mobile.changePage('#LoginPage');
 }
 
 
-/* --------- 【mBaaS：ファイルストア②】Shop画像の取得  ---------- */
+
+/* --------- 【mBaaS：ファイルストア】Shop画像の取得  ---------- */
 // 取得した「Shop」クラスデータからShop画面用の画像名を取得
 function showShopDetail(shopId) {
     // 【mBaaS：ファイルストア②】Shop画像の取得
@@ -210,7 +193,7 @@ function showShopDetail(shopId) {
     $.mobile.changePage('#ShopPage');
 }
 
-
+/* --------- 【mBaaS：データストア】Shop一覧の取得  ---------- */
 //　mBaaSに登録されているShop情報を取得してリストに表示する
 function showShopList() {
 
@@ -253,6 +236,112 @@ function showShopList() {
 }
 
 
+
+/* --------- 【mBaaS：会員管理④】ユーザー情報の更新  ---------- */
+// お気に入りの一覧での「お気に入り更新」ボタン押下時の処理
+function onUpdateFavoriteBtn() {
+    // 【mBaaS：会員管理④ユーザー情報の更新
+    //ONを設定している項目を取得
+    var array = [];
+    $('[name=favorite_shop]').each(function() {
+        var tmp = $(this).val();
+        if (tmp != "off") {
+            array.push(tmp);
+        }
+    });
+
+    // ログイン中のユーザーの更新favoriteを設定
+    currentLoginUser.favorite = array;
+
+　　// ユーザー情報を更新
+    currentLoginUser.update()
+                    .then(function(currentLoginUser) {
+                        // 更新に成功した場合の処理
+                        if (currentInstallation) {
+
+                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+                            // お気に入り情報を設定
+                            currentInstallation.favorite = array;
+
+                            // installation情報の更新
+                            currentInstallation.update()
+                                .then(function(installation) {
+                                    // installation更新成功時の処理
+                                    alert("お気に入り情報更新に成功しました");
+                                    showFavorite();
+                                })
+                                .catch(function(error) {
+                                    // installation更新失敗時の処理
+                                });
+                        }
+                        else {
+                            // installation更新成功時の処理
+                            alert("お気に入り情報更新に成功しました");
+                            showFavorite();
+                        }
+                    })
+                    .catch(function(error) {
+                        // 更新に失敗した場合の処理
+                        alert("お気に入り登録に失敗！次のエラー発生：" + error);
+                    });
+}
+
+
+/* --------- 【mBaaS：会員管理⑤】ユーザー情報の更新  ---------- */
+// ショップ詳細ページでの「お気に入り登録」ボタン押下時の処理
+function onFavoriteBtn() {
+    // 【mBaaS：会員管理⑤】ユーザー情報の更新
+　　// ログイン中のユーザーのお気に入り情報（favorite）を設定
+    currentLoginUser.favorite.push(currentShopId);
+
+    // ユーザー情報を更新
+    currentLoginUser.update()
+                    .then(function(currentLoginUser) {
+                            // 更新に成功した場合の処理
+
+                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+                            if(currentInstallation ){
+                                // お気に入り情報を設定
+                                currentInstallation.favorite = currentLoginUser.favorite;
+                                // installation情報の更新
+                                currentInstallation.update()
+                                    .then(function(installation) {
+                                        // 更新に成功した場合の処理
+                                        alert("お気に入り登録に成功");
+                                        showShopDetail(currentShopId);
+                                    })
+                                    .catch(function(error) {
+                                        // 更新に失敗した場合の処理
+                                    });
+                            } else {
+                                    // 更新に成功した場合の処理
+                                    alert("お気に入り登録に成功");
+                                    showShopDetail(currentShopId);
+                            }
+                    })
+                    .catch(function(error) {
+                        // 更新に失敗した場合の処理
+                        alert("お気に入り登録に失敗！次のエラー発生：" + error);
+                    });
+}
+
+/* -------------------------- 実装済みメソッド---------------- */
+//　mBaaS側のログアウト処理を実施する
+function onLogoutBtn()
+{
+    //ログアウト処理実施
+    ncmb.User.logout();
+
+    //ログイン中ユーザをリセット
+    currentLoginUser = null;
+
+    //処理結果を表示
+    alert('ログアウト成功');
+
+    //ログインページに移動
+    $.mobile.changePage('#LoginPage');
+}
+
 //　mBaaSにお気に入り登録されているShop情報を取得してリストに表示する
 function showFavorite() {
 
@@ -293,94 +382,7 @@ function showFavorite() {
     $.mobile.changePage('#FavoritePage');
 }
 
-
-function onUpdateFavoriteBtn() {
-
-    // 【mBaaS：会員管理④ユーザー情報の更新
-
-    //ONを設定している項目を取得
-    var array = [];
-    $('[name=favorite_shop]').each(function() {
-        var tmp = $(this).val();
-        if (tmp != "off") {
-            array.push(tmp);
-        }
-    });
-
-    // ログイン中のユーザーの更新favoriteを設定
-    currentLoginUser.favorite = array;
-
-// ユーザー情報を更新
-    currentLoginUser.update()
-                    .then(function(currentLoginUser) {
-                        // 更新に成功した場合の処理
-                        if (currentInstallation) {
-
-                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
-                            // お気に入り情報を設定
-                            currentInstallation.favorite = array;
-
-                            // installation情報の更新
-                            currentInstallation.update()
-                                .then(function(installation) {
-                                    // installation更新成功時の処理
-                                    alert("お気に入り情報更新に成功しました");
-                                    showFavorite();
-                                })
-                                .catch(function(error) {
-                                    // installation更新失敗時の処理
-                                });
-                        }
-                        else {
-                            // installation更新成功時の処理
-                            alert("お気に入り情報更新に成功しました");
-                            showFavorite();
-                        }
-                    })
-                    .catch(function(error) {
-                        // 更新に失敗した場合の処理
-                        alert("お気に入り登録に失敗！次のエラー発生：" + error);
-                    });
-}
-
-// 「お気に入り登録」ボタン押下時の処理
-function onFavoriteBtn() {
-    // 【mBaaS：会員管理⑤】ユーザー情報の更新
-
-　　// ログイン中のユーザーのお気に入り情報（favorite）を設定
-    currentLoginUser.favorite.push(currentShopId);
-
-    // ユーザー情報を更新
-    currentLoginUser.update()
-                    .then(function(currentLoginUser) {
-                            // 更新に成功した場合の処理
-
-                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
-                            if(currentInstallation ){
-                                // お気に入り情報を設定
-                                currentInstallation.favorite = currentLoginUser.favorite;
-                                // installation情報の更新
-                                currentInstallation.update()
-                                    .then(function(installation) {
-                                        // 更新に成功した場合の処理
-                                        alert("お気に入り登録に成功");
-                                        showShopDetail(currentShopId);
-                                    })
-                                    .catch(function(error) {
-                                        // 更新に失敗した場合の処理
-                                    });
-                            } else {
-                                    // 更新に成功した場合の処理
-                                    alert("お気に入り登録に成功");
-                                    showShopDetail(currentShopId);
-                            }
-                    })
-                    .catch(function(error) {
-                        // 更新に失敗した場合の処理
-                        alert("お気に入り登録に失敗！次のエラー発生：" + error);
-                    });
-}
-
+//　会員情報を表示する
 function showInfoPage() {
     // 各ラベルに値を設定
     $("#info_nickName").text(currentLoginUser.nickname);
@@ -391,6 +393,7 @@ function showInfoPage() {
     $.mobile.changePage('#InfoPage');
 }
 
+//　ローカルショップリストを変換する
 function convertShopList (shops) {
     var shopListTmp = {};
     for (var i = 0; i < shops.length; i++) {
