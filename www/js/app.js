@@ -70,6 +70,22 @@ function showShopDetail(shopId) {
     $.mobile.changePage('#ShopPage');
 }
 
+/* --------- 【mBaaS：データストア】Shop一覧の取得  ---------- */
+//　mBaaSに登録されているShop情報を取得してリストに表示する
+function showShopList() {
+
+    //リストをリセットします。
+    $('#listShop').empty();
+
+    //表示名を指定します。
+    $("#nickName").text(currentLoginUser.nickname);
+
+    // 【mBaaS：データストア】「Shop」クラスのデータを取得
+　　
+    $.mobile.changePage('#TopPage');
+}
+
+
 /* --------- 【mBaaS：会員管理④】ユーザー情報の更新  ---------- */
 // お気に入りの一覧での「お気に入り更新」ボタン押下時の処理
 function onUpdateFavoriteBtn() {
@@ -100,22 +116,6 @@ function onLogoutBtn()
     //ログインページに移動
     $.mobile.changePage('#LoginPage');
 }
-
-
-//　mBaaSに登録されているShop情報を取得してリストに表示する
-function showShopList() {
-
-    //リストをリセットします。
-    $('#listShop').empty();
-
-    //表示名を指定します。
-    $("#nickName").text(currentLoginUser.nickname);
-
-    // 【mBaaS：データストア】「Shop」クラスのデータを取得
-　　
-    $.mobile.changePage('#TopPage');
-}
-
 
 //　mBaaSにお気に入り登録されているShop情報を取得してリストに表示する
 function showFavorite() {
