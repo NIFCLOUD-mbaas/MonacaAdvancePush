@@ -171,7 +171,7 @@ function showShopDetail(shopId) {
     currentShopId = shopId;
     var shopTmp = shopList[shopId];
     $("#shopName").text(shopTmp.name);
-    $("#shopImage").attr("src" , publicFileUrl + shopTmp.sale_image);
+    $("#shopImage").attr("src" , publicFileUrl + shopTmp.shop_image);
 
     // お気に入り登録されている場合の表示設定
     if (currentLoginUser.favorite.indexOf(shopId) >= 0) {
