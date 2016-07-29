@@ -259,7 +259,7 @@ function onUpdateFavoriteBtn() {
                         // 更新に成功した場合の処理
                         if (currentInstallation) {
 
-                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+                            // 【mBaaS：プッシュ通知③】installationにユーザー情報を紐づける
                             // お気に入り情報を設定
                             currentInstallation.favorite = array;
 
@@ -299,7 +299,7 @@ function onFavoriteBtn() {
                     .then(function(currentLoginUser) {
                             // 更新に成功した場合の処理
 
-                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+                            // 【mBaaS：プッシュ通知④】installationにユーザー情報を紐づける
                             if(currentInstallation ){
                                 // お気に入り情報を設定
                                 currentInstallation.favorite = currentLoginUser.favorite;
