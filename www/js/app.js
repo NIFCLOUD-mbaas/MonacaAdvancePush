@@ -43,13 +43,46 @@ var currentShopId;
 /* --------- 【mBaaS：会員管理①】会員登録用メールを要求する ------------ */
 function onSignupBtn() {
     // 【mBaaS：会員管理①】会員登録用メールを要求する
-
+    var mailaddress = $("#signup_mailaddress").val();
+    ncmb.User.requestSignUpEmail(mailaddress)
+         .then(function(data){
+            // 会員登録用メールの要求成功時の処理
+            alert("リクエストを送信しました！メールをご確認ください。");
+            $.mobile.changePage('#LoginPage');
+         })
+         .catch(function(err){
+            // 会員登録用メールの要求失敗時の処理
+            alert("リクエスト失敗！次のエラー発生: " + err);
+           $.mobile.changePage('#LoginPage');
+         });
 }
 
 /* --------- 【mBaaS：会員管理②】メールアドレスとパスワードでログイン ----------- */
 function onLoginBtn()
 {
     //【mBaaS：会員管理②】メールアドレスとパスワードでログイン
+    // 入力したメールアドレスの値
+    var mailaddress = $("#login_mailaddress").val();
+    // 入力したパスワードの値
+    var password = $("#login_password").val();
+
+    // メールアドレスとパスワードでログイン処理実施
+    ncmb.User.loginWithMailAddress(mailaddress, password)
+        .then(function(user) {
+            // ログイン成功時の処理
+            alert("ログイン成功");
+            currentLoginUser = ncmb.User.getCurrentUser();
+            if(currentLoginUser.nickname) {
+                showShopList();
+            } else {
+                // ユーザ情報登録画面遷移
+                $.mobile.changePage('#RegisterPage');
+            }
+        })
+        .catch(function(error) {
+            // ログイン失敗時の処理
+            alert("ログイン失敗！次のエラー発生: " + error);
+        });    
 
 }
 
