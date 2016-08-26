@@ -2,7 +2,7 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-# <span style="font-size: 30%">【Monaca編】ニフティクラウドmobile backend レベルアップセミナー</span><br>__クーポン配信アプリ<br>を作ろう！__</span>
+# <span style="font-size: 30%">【Monaca編】ニフティクラウドmobile backend レベルアップセミナー</span><br>### クーポン配信アプリ<br>を作ろう！### </span>
 
 @ncmbadmin
 
@@ -160,7 +160,7 @@ book.save()
 ---
 ## ハンズオンの流れ
 
-__<font color="#49a7e5" size="5">前半&nbsp;</font><font size="6">「mBaaS Shop List」アプリを作ろう！</font>__
+### <font color="#49a7e5" size="5">前半&nbsp;</font><font size="6">「mBaaS Shop List」アプリを作ろう！</font>###
 
 .size_large[
 1. ハンズオンの準備
@@ -169,7 +169,7 @@ __<font color="#49a7e5" size="5">前半&nbsp;</font><font size="6">「mBaaS Shop
 1. お気に入り機能の作成
 ]
 
-__<font color="#49a7e5" size="5">後半&nbsp;</font><font size="6">プッシュ通知を送ろう！</font>__
+### <font color="#49a7e5" size="5">後半&nbsp;</font><font size="6">プッシュ通知を送ろう！</font>###
 .size_large[
 1. プッシュ通知の準備
 1. プッシュ通知を送信：セグメント配信
@@ -200,7 +200,7 @@ layout: false
 
 下記リンクをクリックして、ZIPファイルでダウンロードしてください▼<br>
 .size_large[
-　　　 __[MonacaAdvancePush](https://github.com/ncmbadmin/MonacaAdvancePush/archive/handson_version.zip)__
+　　　 ### [MonacaAdvancePush](https://github.com/ncmbadmin/MonacaAdvancePush/archive/handson_version.zip)###
 ]
 
 * zipファイルを展開し、[Monaca](https://ja.monaca.io/)でプロジェクトをインポートします。
@@ -632,8 +632,8 @@ layout: false
 * 以下の手順でデータストアに「Shop」という名前のクラスを作成します
  * ニフティクラウド mobile backendのダッシュボードから「データストア」を開く
  * 「＋作成▼」ボタンをクリックし、「インポート」をクリックします
- * クラス名に「__Shop__」と入力します
- * ダウンロードしたプロジェクトにあるSettingフォルダ内の「__Shop.json__」を選択してアップロードします
+ * クラス名に「### Shop### 」と入力します
+ * ダウンロードしたプロジェクトにあるSettingフォルダ内の「### Shop.json### 」を選択してアップロードします
 
 .center[
 ![ShopClass](readme-image/ShopClass.png)
@@ -900,408 +900,483 @@ AFTER
 
 ---
 ## Shop情報の設定
-### 動作確認(2)会員情報登録とShop情報表示
+### 動作確認③会員情報登録とShop情報表示
 
-* トップ画面に「icon画像」「Shop名」「カテゴリ」が表示されます
-* Shopを１つ選んでタップします
- * mBaaSに登録されているimageにアクセスし、Shopページ（画像）が表示されます
-* 会員ページをタップします
- * ユーザー情報が表示されます
+![test_new1.png](https://qiita-image-store.s3.amazonaws.com/0/18698/dbcd7bb5-5ebb-9330-7795-3aaeb2646879.png)
 
-.center[
-![動作確認②](readme-image/動作確認②.png)
-]
-.footnote[
-[エラーコード一覧](http://mb.cloud.nifty.com/doc/current/rest/common/error.html#REST%20API%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
-]
+
 
 ---
-layout: true
-class: center, middle, inverse
----
-# 4.お気に入り機能の作成
-
----
-layout: false
-## お気に入り機能の作成
+## お気に入り登録機能の作成
 ### お気に入り機能について
 
 * お気に入り機能は好きなShopをお気に入りとして保存できる機能です
- * 「お気に入り」画面ではSwitchと「登録」ボタンで設定します
- * 「Shop」画面では「お気に入りを登録する」をタップすることでShop単位で設定できます
-
-.center[
-![favorite](readme-image/favorite.png)
-]
+ * 「お気に入り」画面と「Shop」画面で登録可能です
 
 ---
-## お気に入り機能の作成
-### 会員管理④：ユーザー情報の更新[実装済み]
+## お気に入り登録機能の作成
+### お気に入り機能について
 
-* `FavoriteActivity.java`を開きます
-* `doFavoriteSave()`を開きます
-* お気に入り画面からfavoriteデータの更新処理はユーザー情報の登録と同様にして実装できます
+* 「お気に入り」画面ではSwitchのON/OFFを設定し、「お気に入りを更新する」ボタンで設定します
+* ショップ詳細画面ではまだお気に入り登録していない場合、「お気に入りを登録」をタップすることでShop単位で設定できます
+ * 「♥」…ON　「♡」…OFF
 
 ---
-## お気に入り機能の作成
-### 会員管理④：ユーザー情報の更新[実装済み]
+## お気に入り登録機能の作成
+### お気に入り機能について
+
+![favorite1.png](https://qiita-image-store.s3.amazonaws.com/0/18698/38be6f3e-31bc-612e-12a0-2e2cee50f7f3.png)
 
 
-```java
-//**************** 【mBaaS/User ④: 会員情報更新】***************
-List<String> list = new ArrayList<String>();
-list = common.currentUser.getList("favorite");
-common.currentUser.put("favorite", list);
-common.currentUser.saveInBackground(new DoneCallback() {
-    @Override
-    public void done(NCMBException e) {
-        if (e != null) {
-            //保存失敗時の処理
-            <<省略>>
-        } else {
-            //保存成功時の処理
-            new AlertDialog.Builder(FavoriteActivity.this)
-                    .setTitle("Notification from Nifty")
-                    .setMessage("お気に入り保存成功しました!")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(getApplicationContext(), FavoriteActivity.class);
-                            startActivityForResult(intent, REQUEST_RESULT);
-                        }
+
+---
+## お気に入り登録機能の作成
+### 会員管理④：ユーザー情報の更新(お気に入り画面)
+
+* `app.js`の`onUpdateFavoriteBtn()`を開きます
+* mBaaSの会員データとして保持していた「favorite」データを、お気に入り画面で設定したデータに更新する処理を実装します
+ * コメントの直下に追加します。
+
+---
+## お気に入り登録機能の作成
+### 会員管理④：ユーザー情報の更新(お気に入り画面)
+
+BEFORE
+
+```js:app.js
+    // 【mBaaS：会員管理④】ユーザー情報の更新
+```
+
+---
+## お気に入り登録機能の作成
+### 会員管理④：ユーザー情報の更新(お気に入り画面)
+
+AFTER
+
+```js:app.js
+    // 【mBaaS：会員管理④ユーザー情報の更新
+
+    //ONを設定している項目を取得
+    var array = [];
+    $('[name=favorite_shop]').each(function() {
+        var tmp = $(this).val();
+        if (tmp != "off") {
+            array.push(tmp);
+        }
+    });
+
+    // ログイン中のユーザーの更新favoriteを設定
+    currentLoginUser.favorite = array;
+
+    // ユーザー情報を更新
+    currentLoginUser.update()
+                    .then(function(currentLoginUser) {
+                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+                            alert("お気に入り情報更新に成功しました");
+                            showFavorite();
                     })
-                    .show();
-        }
-    }
-});
+                    .catch(function(error) {
+                        // 更新に失敗した場合の処理
+                        alert("お気に入り登録に失敗！次のエラー発生：" + error);
+                    });
+
+```
+
+
+---
+## お気に入り登録機能の作成
+### 会員管理⑤：ユーザー情報の更新(Shop画面)
+
+* `app.js`の`onFavoriteBtn()`を開きます
+* 同様にmBaaSの会員データとして保持していた「favorite」データを、Shop画面で設定したデータに更新する処理を実装します
+
+---
+## お気に入り登録機能の作成
+### 会員管理⑤：ユーザー情報の更新(Shop画面)
+
+BEFORE
+
+```js:app.js
+    // 【mBaaS：会員管理⑤】ユーザー情報の更新
 ```
 
 ---
-## お気に入り機能の作成
+## お気に入り登録機能の作成
+### 会員管理⑤：ユーザー情報の更新(Shop画面)
 
-### 会員管理⑤：ユーザー情報の更新[実装済み]
+AFTER
 
-* `ShopActivity.java`を開きます
-* `doFavoriteRegister()`を開きます
-* Shop画面からもfavoriteデータの更新処理はユーザー情報の登録と同様にして実装できます
+```js:app.js
+    // 【mBaaS：会員管理⑤】ユーザー情報の更新
 
----
-## お気に入り機能の作成
+    // ログイン中のユーザーのお気に入り情報（favorite）を設定
+    currentLoginUser.favorite.push(currentShopId);
 
-### 会員管理⑤：ユーザー情報の更新[実装済み]
-
-
-```java
-//**************** 【mBaaS/User⑤: 会員情報更新】***************
-List<String> list = new ArrayList<String>();
-list = common.currentUser.getList("favorite");
-list.add(objId);
-common.currentUser.put("favorite", list);
-common.currentUser.saveInBackground(new DoneCallback() {
-    @Override
-    public void done(NCMBException e) {
-        if (e != null) {
-            //更新失敗時の処理
-            <<省略>>
-        } else {
-            //更新成功時の処理
-          　<<省略>>
-        }
-    }
-});
+    // ユーザー情報を更新
+    currentLoginUser.update()
+                    .then(function(currentLoginUser) {
+                            // 【mBaaS：プッシュ通知④】installationにユーザー情報を紐づける
+                            // 更新に成功した場合の処理
+                            alert("お気に入り登録に成功");
+                            showShopDetail(currentShopId);
+                    })
+                    .catch(function(error) {
+                            // 更新に失敗した場合の処理
+                            alert("お気に入り登録に失敗！次のエラー発生：" + error);
+                    });
 ```
 
----
-## お気に入り機能の作成
-### 動作確認(3)お気に入り情報登録・更新
-
-* 再びシュミレーターでビルドし、動作確認を行います
-* ログイン後トップ画面下の「お気に入り」をタップします
-* お気に入り画面からお気に入り登録をしてみましょう
-* 各Shop画面からも同様に登録してみましょう
- * ログを確認してください
-
-.center[
-![動作確認③](readme-image/動作確認③.png)
-]
-
-.footnote[
-[エラーコード一覧](http://mb.cloud.nifty.com/doc/current/rest/common/error.html#REST%20API%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
-]
 
 ---
-layout: true
-class: center, middle, inverse_sub
----
-# プッシュ通知を送ろう！
+## お気に入り登録機能の作成
+### 動作確認④お気に入り情報登録・更新
 
-.size_large[
-＜後半＞
-]
-
----
-layout: true
-class: center, middle, inverse
----
-# 1.プッシュ通知の準備
+* ログインをするとトップ画面が表示されます
+* 画面下の「お気に入り」をタップします
+* お気に入り画面が表示されるので、登録してみましょう
+* 各Shop画面でも同様に登録してみましょう
+* お気に入りが反映しているかどうかを確認してください
 
 ---
-layout: false
-## プッシュ通知の準備
+## お気に入り登録機能の作成
+### 動作確認④お気に入り情報登録・更新
+
+![favorite_check.png](https://qiita-image-store.s3.amazonaws.com/0/18698/81769caa-e34f-a192-6730-8704ffbfe165.png)
+
+
+
+---
+## プッシュ通知を送信
 ### このあとのデバッグについて
 
 * 以下の用意が必要です
- * デバッグ用のAndroid実機 (4.0~)
- * GCMのプッシュ通知用APIキー
-* GCMのプッシュ通知用APIキーがまだの場合は下記をご参照ください
- * [【サンプル】アプリにプッシュ通知を組み込もう！](https://github.com/NIFTYCloud-mbaas/android_push_demo#%E6%89%8B%E9%A0%86)
+ * デバッグ用の実機 (iOS, Android)
+ * プッシュ通知用証明書 (iOSの場合)
+ * プッシュ通知用APIキー (Androidの場合)
+
+* APIキー、証明書の取得がまだの場合は下記をご参照ください
+ * [【サンプル】アプリにプッシュ通知を組み込もう！](https://github.com/NIFTYCloud-mbaas/MonacaPushApp)
 
 ---
-## プッシュ通知の準備
-### mBaaSの設定
+## プッシュ通知を送信
+### mBaaSの設定（iOS）
 
-* プッシュ通知の許可を行います
-* GCMのプッシュ通知用APIキーを設定します
+* プッシュ通知の許可とAPNsの証明書(p12形式)のアップロードを行います
 
-.center[
-![mBaaSプッシュ通知設定](readme-image/mBaaSプッシュ通知設定.png)
-]
+![mBaaSプッシュ通知設定.png](https://qiita-image-store.s3.amazonaws.com/0/112032/7a2054e1-9469-858b-f8d7-4792e7469e1b.png)
+
 
 ---
-## プッシュ通知の準備
-### プッシュ通知①：端末を登録
+## プッシュ通知を送信
+### mBaaSの設定（Android）
 
-* `MainActivity.java`を開きます
-* `onCreate()`メソッド内のSDKの初期化を実装した部分の直ぐ下に処理を実装します
+* プッシュ通知の許可とAPIキーの設定を行います
 
-```java
-//**************** 【mBaaS/Push①: 端末を登録】***************
+![android_push.png](https://qiita-image-store.s3.amazonaws.com/0/18698/82e2d98d-6999-90b2-e4a3-413f79e60779.png)
 
+
+
+---
+## プッシュ通知を送信
+### プッシュ通知①：デバイストークンの取得
+
+* `app.js`の`function()`を開きます
+* 以下のコメントの直下にコードを追加
+
+BEFORE
+
+```js:app.js
+    // 【mBaaS：プッシュ通知①】デバイストークンの取得し、サーバへ登録処理
 ```
 
 ---
-## プッシュ通知の準備
-### プッシュ通知①：端末を登録
+## プッシュ通知を送信
+### プッシュ通知①：デバイストークンの取得
 
-```java
-//**************** 【mBaaS/Push①: 端末を登録】***************
-//端末情報を扱うNCMBInstallationのインスタンスを作成する
-final NCMBInstallation installation = NCMBInstallation.getCurrentInstallation();
-//GCMからRegistrationIdを取得しinstallationに設定する
-installation.getRegistrationIdInBackground("PROJECT_NUMBER", new DoneCallback() {
-    @Override
-    public void done(NCMBException e) {
-        if (e == null) {
-            installation.saveInBackground(new DoneCallback() {
-                @Override
-                public void done(NCMBException e) {
-                    if(e == null){
-                        Log.d(TAG, "端末情報を保存成功しました。");
-                    }else if(NCMBException.DUPLICATE_VALUE.equals(e.getCode())){
-                        //保存失敗 : registrationID重複
-                        updateInstallation(installation);
-                    }else {
-                        Log.d(TAG, "端末情報を保存失敗しました。");
+AFTER
+
+```js:app.js
+    // 【mBaaS：プッシュ通知①】デバイストークンの取得し、サーバへ登録処理
+    document.addEventListener("deviceready", function(){
+            // デバイストークンを取得してinstallationに登録する
+            window.NCMB.monaca.setDeviceToken(
+                appKey,
+                clientKey,
+                project_number
+            );
+
+            setTimeout(function(){
+                //currentInstallationの情報を取得
+                window.NCMB.monaca.getInstallationId(
+                    function(id) {
+                        //JavaScript SDKのInstallationクラスを利用して端末情報を取得
+                        ncmb.Installation.fetchById(id)
+                                         .then(function(installation){
+                                            //サーバから取得した結果をcurrentInstallationに保存
+                                            currentInstallation = installation;
+                                          })
+                                         .catch(function(err){
+                                            // エラー処理
+                                          });
                     }
-                }
-            });
-        } else {
-        }
-    }
-});
+                );
+        	},20000);
+
+        },false);
 ```
 
 ---
-## プッシュ通知の準備
-### プッシュ通知①：端末を登録
 
-* 前のスライドのコードにある`PROJECT_NUMBER`の設定を行います。
+## プッシュ通知を送信
+### プッシュ通知①：デバイストークンの取得
 
-.center[
-![プロジェクト番号設定](readme-image/projectnumber.png)
-]
+* Androidの場合、`app.js`で指定している`PROJECT_NUMBER` を設定します。
 
----
-layout: true
-class: center, middle, inverse
----
-# 2.プッシュ通知を送信<br>セグメント配信
+![androidprojnum.png](https://qiita-image-store.s3.amazonaws.com/0/18698/78297862-ca99-f2a1-1bed-bf677de9ddbd.png)
+
 
 ---
-layout: false
-## プッシュ通知を送信：セグメント配信
+
+## プッシュ通知を送信①セグメント配信
 ### プッシュ通知②：installationにユーザー情報を紐づける
 
-* `RegisterActivity.java`を開きます
-* 「【mBaaS/User③: ユーザー情報更新】」の更新成功時の処理内にセグメント配信のために必要なユーザー情報をinstallationに紐付けるための処理を実装します
+* `app.js`の`onRegisterBtn()`を開きます
+* セグメント配信のために必要なユーザー情報をinstallationに紐付けるための処理を実装します
+ * 実装箇所は「【mBaaS：会員管理③】ユーザー情報更新」の更新成功時の処理内です
+ * 以下のコメントの直下にコードを変更します（追記ではありません）
 
+BEFORE
 
-```java
-//**************** 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける ***************
-
+```js:app.js
+// 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+alert("会員情報登録に成功");
+//お店一覧画面遷移
+showShopList();
 ```
 
 ---
-## プッシュ通知を送信：セグメント配信
+
+## プッシュ通知を送信①セグメント配信
 ### プッシュ通知②：installationにユーザー情報を紐づける
 
-* 次のように追記します
+AFTER
 
-```java
-//**************** 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける ***************
-NCMBInstallation currInstallation  = NCMBInstallation.getCurrentInstallation();
-currInstallation.put("prefecture", prefecture);
-currInstallation.put("gender", selectedGender);
-currInstallation.put("favorite", list);
-currInstallation.saveInBackground(new DoneCallback() {
-    @Override
-    public void done(NCMBException e) {
-        if (e != null) {
-            //更新失敗時の処理
-        } else {
-            //更新成功時の処理
-        }
-    }
-});
+```js:app.js
+// 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+if (currentInstallation) {
+    // ユーザー情報を設定
+    currentInstallation.prefecture = prefecture;
+    currentInstallation.gender = gender;
+    currentInstallation.favorite = [];
+
+    // installation情報の更新
+    currentInstallation.update()
+        .then(function(installation) {
+            // installation更新成功時の処理                                    
+        })
+        .catch(function(error) {
+            // installation更新失敗時の処理
+        });
+}else {
+    alert("会員情報登録に成功");
+    //お店一覧画面遷移
+    showShopList();
+}
+
 ```
 
 ---
-## プッシュ通知を送信：セグメント配信
+
+## プッシュ通知を送信①セグメント配信
 ### プッシュ通知②：installationにユーザー情報を紐づける
 
 * それぞれ処理を追記します
 
-```java
-//更新失敗時の処理
-Log.d(TAG, "端末情報を保存失敗しました。");
+
+```js
+ // installation更新成功時の処理
+ alert("会員情報登録に成功");
+ //お店一覧画面遷移
+ showShopList();
 ```
 
-```java
-//更新成功時の処理
-Log.d(TAG, "端末情報を保存成功しました。");
-Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-startActivityForResult(intent, REQUEST_RESULT );
+
+---
+
+## プッシュ通知を送信①セグメント配信
+### プッシュ通知②：installationにユーザー情報を紐づける
+
+* それぞれ処理を追記します
+
+```js
+// installation更新失敗時の処理
+alert("installation更新(ユーザー登録)に失敗しました:+error.code)")
 ```
 
 ---
-## プッシュ通知を送信：セグメント配信
-### プッシュ通知③：installationにユーザー情報を紐づける<br>[実装済み]
 
-* `FavoriteActivity.java`開きます
-* `doFavoriteSave()`を開きます
-* 同様に、お気に入り画面でお気に入り情報が更新されるたびに、installation情報が書き換えられます
+## プッシュ通知を送信①セグメント配信
+### プッシュ通知③：installationにユーザー情報を紐づける
 
-```java
-//**************** 【mBaaS：プッシュ通知④】installationにユーザー情報を紐づける***************
-//端末情報を保存する
-NCMBInstallation currInstallation = NCMBInstallation.getCurrentInstallation();
-currInstallation.put("favorite", list);
-currInstallation.saveInBackground(new DoneCallback() {
-    @Override
-    public void done(NCMBException e) {
-        if (e != null) {
-            //保存失敗
-            Log.d(TAG, "端末情報を保存失敗しました。");
-        } else {
-            //保存成功
-            Log.d(TAG, "端末情報を保存成功しました。");
-        }
-    }
-});
+* 同様に、お気に入り画面・Shop画面でお気に入り情報が更新されるたびに、installation情報も書き換えます
+
+---
+
+## プッシュ通知を送信①セグメント配信
+### プッシュ通知③：installationにユーザー情報を紐づける
+
+* `app.js`の`onUpdateFavoriteBtn()`を開きます
+* 以下のコードを更新します（追記ではありません）
+
+BEFORE
+
+```js:app.js
+// 【mBaaS：プッシュ通知③】installationにユーザー情報を紐づける
+alert("お気に入り情報更新に成功しました");
+showFavorite();
 ```
 
 ---
-## プッシュ通知を送信：セグメント配信
-### プッシュ通知④：installationにユーザー情報を紐づける<br>[実装済み]
 
-* `ShopActivity.java`開きます
-* `doFavoriteRegister()`開きます
-* 同様に、Shop画面でもお気に入り情報が更新されるたびに、installation情報が書き換えられます
+## プッシュ通知を送信①セグメント配信
+### プッシュ通知③：installationにユーザー情報を紐づける
 
-```java
-//****************【mBaaS：プッシュ通知⑤】installationにユーザー情報を紐づける***************
-NCMBInstallation currInstallation  = NCMBInstallation.getCurrentInstallation();
-currInstallation.put("favorite", list);
-currInstallation.saveInBackground(new DoneCallback() {
-    @Override
-    public void done(NCMBException e) {
-        if (e != null) {
-            //保存失敗した場合の処理
-            Log.d(TAG, "端末情報を保存失敗しました。");
-        } else {
-            //保存成功した場合の処理
-            Log.d(TAG, "端末情報を保存成功しました。");
-        }
-    }
-});
+AFTER
+
+```js:app.js
+// 【mBaaS：プッシュ通知③】installationにユーザー情報を紐づける
+
+// 更新に成功した場合の処理
+if (currentInstallation) {
+
+    // お気に入り情報を設定
+    currentInstallation.favorite = array;
+
+    // installation情報の更新
+    currentInstallation.update()
+        .then(function(installation) {
+            // installation更新成功時の処理
+            alert("お気に入り情報更新に成功しました");
+            showFavorite();
+        })
+        .catch(function(error) {
+            // installation更新失敗時の処理
+        });                    
+}
+else {
+    // installation更新成功時の処理
+    alert("お気に入り情報更新に成功しました");
+    showFavorite();
+}
 ```
+
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認の準備
+
+## プッシュ通知を送信①セグメント配信
+### プッシュ通知④：installationにユーザー情報を紐づける
+
+* `app.js`の`onFavoriteBtn()`を開きます
+* 以下のコードを更新します（追記ではありません）
+
+BEFORE
+
+```js:app.js
+// 【mBaaS：プッシュ通知④】installationにユーザー情報を紐づける
+alert("お気に入り登録に成功");
+showShopDetail(currentShopId);
+```
+
+---
+
+## プッシュ通知を送信①セグメント配信
+### プッシュ通知④：installationにユーザー情報を紐づける
+
+AFTER
+
+```js:app.js
+// 【mBaaS：プッシュ通知④】installationにユーザー情報を紐づける
+if(currentInstallation ){
+ // お気に入り情報を設定
+ currentInstallation.favorite = currentLoginUser.favorite;
+ // installation情報の更新
+ currentInstallation.update()
+     .then(function(installation) {
+         // 更新に成功した場合の処理
+         alert("お気に入り登録に成功");
+         showShopDetail(currentShopId);
+     })
+     .catch(function(error) {
+         // 更新に失敗した場合の処理
+     });   
+} else {
+     // 更新に成功した場合の処理
+     alert("お気に入り登録に成功");
+     showShopDetail(currentShopId);
+}                     
+```
+
+
+---
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑤mBaaS準備
 
 * もう一度会員情報登録画面を表示するため、mBaaSの会員管理画面で「クラスの編集」をクリックします
 * 「nickname」にチェックを入れて上の「削除」ボタンで削除します
 
-.center[
-![動作確認④セグメント0](readme-image/動作確認④セグメント0.png)
-]
+---
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑤mBaaS準備
+
+![favorite.png](https://qiita-image-store.s3.amazonaws.com/0/18698/a786c67e-3eea-99ce-96d8-6f43c534a6ef.png)
+
+
 
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認の準備
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
 
 * 実機でアプリをビルドします
-* アプリを起動します
-
-```text
-端末情報を保存成功しました。
-```
-
-* デバイストークンの取得に成功したら、mBaaSダッシュボードで確認します
-
-.center[
-![動作確認④デバイストークン](readme-image/動作確認④デバイストークン.png)
-]
-
-.footnote[
-[エラーコード一覧](http://mb.cloud.nifty.com/doc/current/rest/common/error.html#REST%20API%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
-]
+* アプリを起動します。
+    * iOSの場合、「プッシュ通知」を許可（Yes）を選択ください
 
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認の準備
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
 
-* ログインをし、再びユーザー登録をします
- * このとき、installationが更新されますのでダッシュボードを確認します
- * ログを確認してください
-
+* mBaaSのダッシュボードでは端末が登録さていることを確認します。
 .center[
 ![動作確認④installation追加](readme-image/動作確認④installation追加.png)
 ]
-.footnote[
-[エラーコード一覧](http://mb.cloud.nifty.com/doc/current/rest/common/error.html#REST%20API%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
-]
+
 
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認(4)セグメント配信
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
 
-__shopB__をお気に入り登録しているユーザーに絞り込んでプッシュ通知を配信してみましょう！
+* 以下のユーザーに絞り込んでプッシュ通知を配信してみましょう
+ * shopBをお気に入り登録しているユーザー
+* 今回は登録ユーザーが１人(１端末)なので、shopBをお気に入りに設定しておいてください
 
-* あらかじめshopBをお気に入りに設定しておきます(アプリ側)
-* mBaaSのダッシュボードからShopクラスのデータを開き、shopBの「objectId」をコピーします
+---
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
+
+* mBaaSのダッシュボードからShopクラスのデータを開きます
+* shopBの「objectId」をコピーします
 
 .center[
 ![動作確認④セグメント2](readme-image/動作確認④セグメント2.png)
 ]
 
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認(4)セグメント配信
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
 
 * プッシュ通知を作成します
 * メッセージを入力します
  * 例：ShopBセール開催中！
-* 「Android端末に配信する」にチェックを入れます
+
+* 「iOS端末に配信する」にチェックを入れます
 * 「配信端末」を設定します
 
 .center[
@@ -1309,20 +1384,20 @@ __shopB__をお気に入り登録しているユーザーに絞り込んでプ�
 ]
 
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認(4)セグメント配信
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
 
 * 「installationクラスからの絞込み」を選択します
 * 絞り込み設定をします
  * ここでコピーしたShopBのobjectIdを貼り付けます
 
 .center[
-![動作確認④セグメント3](readme-image/動作確認④セグメント3.png)
+ ![動作確認④セグメント3](readme-image/動作確認④セグメント3.png)
 ]
 
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認(4)セグメント配信
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
 
 * 「１端末に向けて送信されます」と表示されればOKです
 * 「プッシュ通知を作成する」をクリックします
@@ -1333,36 +1408,27 @@ __shopB__をお気に入り登録しているユーザーに絞り込んでプ�
 ]
 
 ---
-## プッシュ通知を送信：セグメント配信
-### 動作確認(4)セグメント配信[おまけ]
+## プッシュ通知を送信①セグメント配信
+### 動作確認⑥セグメント配信
 
-.size_large[
-いろいろなパターンで送ってみましょう！
-* 別のショップを絞り込み
-* 性別で絞込み
-* ShopAをお気に入り登録かつ女性で絞込み
-* ShopDをお気に入り登録かつ東京都で絞込み
-* and more...
-]
+* いろいろなパターンで送ってみましょう！
+ * 別のショップを絞り込み
+ * 性別で絞込み
+ * ShopAをお気に入り登録かつ女性で絞込み
+ * ShopDをお気に入り登録かつ東京都で絞込み
+ * etc...
 
 ---
-layout: true
-class: center, middle, inverse
----
-# 2.プッシュ通知を送信<br>リッチプッシュ
-
----
-layout: false
-
-## プッシュ通知を送信：リッチプッシュ
+## プッシュ通知を送信②リッチプッシュ
 ### リッチプッシュについて
 
 * プッシュ通知登録時にURLを指定することで、開封時にWebビューを表示できる機能です
 * プッシュ通知開封でアプリが起動するときに表示されます
- * アプリ起動中には表示されませんので動作確認にはアプリを閉じておく必要があります（仕様）
+ * アプリ起動中には表示されませんので閉じる必要があります（仕様）
+
 
 ---
-## プッシュ通知を送信：リッチプッシュ
+## プッシュ通知を送信②リッチプッシュ
 ### リッチプッシュについて
 
 * 今回はShopのセール画像を「公開ファイル」機能を利用して配信します
@@ -1371,310 +1437,64 @@ layout: false
 ![sale_image](readme-image/sale_image.png)
 ]
 
+---
+## プッシュ通知を送信②リッチプッシュ
+### リッチプッシュについて
+
+* リンクは以下のように作成できます
+
+```
+https://mb.api.cloud.nifty.com/2013-09-01/applications/アプリケーションID/publicFiles/ファイル名
+```
+
+  * 「アプリケーションID」はアプリIDを指定します
+  * 「ファイル名」はセール画像の名前を指定します
 
 ---
-## プッシュ通知を送信：リッチプッシュ
-### 公開ファイルとは
+## プッシュ通知を送信②リッチプッシュ
+### リッチプッシュについて
 
-* 「公開ファイル」機能とは、ファイルストアに保存した画像をリンクでアクセスできるようにする機能です
-* ファイルストアに登録した画像を「公開ファイル」として公開することが可能です
-
----
-## プッシュ通知を送信：リッチプッシュ
-### 公開ファイル設定
-
-* mBaaSのダッシュボードで、公開ファイル設定「HTTPでの取得」を有効にします
-
-.center[
-![mBaaS公開ファイル設定](readme-image/mBaaS公開ファイル設定.png)
-]
-
----
-## プッシュ通知を送信：リッチプッシュ
-### 公開ファイルURL確認方法
-
-* ファイルストアで確認できます
-* 今回は「ShopD_sale.png」の公開ファイルURLを使用してみます
- * URLをコピーします
-
-.center[
-![公開ファイルURL](readme-image/公開ファイルURL.png)
-]
-
----
-## プッシュ通知を送信：リッチプッシュ
-### 公開ファイルURL確認方法
-
-* ブラウザでリンクをたたいて表示されることを確認してください
+* ブラウザでリンクをたたいて確認してください！
 
 .center[
 ![公開ファイル確認](readme-image/公開ファイル確認.png)
 ]
 
 ---
-## プッシュ通知を送信：リッチプッシュ
-### プッシュ通知⑥：リッチプッシュ通知を表示させる処理
-
-* `MainActivity.java`を開きます
-* `onResume()`を開きます
-* 以下のコメントの直下にコードを追加します
-
-```java
-//**************** 【mBaaS：プッシュ通知⑥】リッチプッシュ通知を表示させる処理 ***************
-```
-
-* 次のように追記します
-
-```java
-//**************** 【mBaaS：プッシュ通知⑥】リッチプッシュ通知を表示させる処理 ***************
-//リッチプッシュ通知の表示
-NCMBPush.richPushHandler(this, getIntent());
-
-//リッチプッシュを再表示させたくない場合はintentからURLを削除します
-getIntent().removeExtra("com.nifty.RichUrl");
-```
-
----
-## プッシュ通知を送信：リッチプッシュ
-### 動作確認(5)リッチプッシュ
+## プッシュ通知を送信②リッチプッシュ
+### 動作確認⑦リッチプッシュ
 
 * 実機でアプリをビルドします
-* 起動した後にホームに戻ります
-
+* アプリを一旦完全に閉じます
+* プッシュ通知を作成します
+* URL欄に作成した公開ファイルのURLを貼り付けます
+* そのまま送信してみましょう
 
 ---
-## プッシュ通知を送信：リッチプッシュ
-### 動作確認(5)リッチプッシュ
-
-* プッシュ通知を作成します
-* メッセージを入力します
-* URL欄にコピーした公開ファイルURLを貼り付けます
-* そのまま送信してみましょう
+## プッシュ通知を送信②リッチプッシュ
+### 動作確認⑦リッチプッシュ
 
 .center[
 ![動作確認⑤リッチプッシュ](readme-image/動作確認⑤リッチプッシュ.png)
 ]
 
----
-## プッシュ通知を送信：リッチプッシュ
-### 動作確認(5)リッチプッシュ
-
-* しばらくするとプッシュ通知が届きます
-* プッシュ通知を開くとWebView画面が現れ、公開ファイルが表示されます
-
-.center[
-![動作確認⑤リッチプッシュ2](readme-image/動作確認⑤リッチプッシュ2.png)
-]
 
 ---
-layout: true
-class: center, middle, inverse
----
-# 2.プッシュ通知を送信<br>ペイロード
-
----
-layout: false
-## プッシュ通知を送信：ペイロード
-### ペイロードについて
-
-* プッシュ通知にはJSON形式で任意のデータを含めることができ、通知を受信した時に、そのデータを受け取って処理を行うことができる機能です
-* 今回は、配信時間とメッセージのデータを設定し、時限式でローカルプッシュを表示させる内容を実装します
- * プッシュ通知に設定するJSON形式のデータの例
- ```text
- {"deliveryTime":"2016-09-22 17:00:00", "message":"タイムセールスタート！"}
- ```
-
----
-## プッシュ通知を送信：ペイロード
-### プッシュ通知⑦：アプリが起動中にプッシュ通知からデータを取得する
-
-* Androidの場合、受信する処理をカスタマイズするために、カスタムサービスを作成する必要があります
-* 今回、コード内にCustomGcmListenerServiceは作成済み
-  - 作成に関して、実装方法はこちらのドキュメントをご参考ください。
-  - [プッシュ通知でJSONデータを取得する](http://mb.cloud.nifty.com/doc/current/push/basic_usage_android.html#%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E9%80%9A%E7%9F%A5%E3%81%A7JSON%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B)
-
----
-## プッシュ通知を送信：ペイロード
-### プッシュ通知⑦：アプリがプッシュ通知からデータを取得する
-
-* `CustomGcmListenerService.java`を開きます
-* `onMessageReceived()`メソッド外に次のメソッドを実装します
-
-```java
-//**************** 【mBaaS：プッシュ通知⑦】アプリがプッシュ通知からデータを取得する***************
-```
-
----
-## プッシュ通知を送信：ペイロード
-### プッシュ通知⑦：アプリがプッシュ通知からデータを取得する
-
-以下のように追記します
-
-```java
-//**************** 【mBaaS：プッシュ通知⑦】アプリが起動中にプッシュ通知からデータを取得する***************
-//ペイロードデータの取得
-if (data.containsKey("com.nifty.Data")) {
-    try {
-        JSONObject json = new JSONObject(data.getString("com.nifty.Data"));
-
-        if (json.has("deliveryTime") && json.has("message")) {
-            Log.d(TAG,"ペイロードを取得しました！");
-            //ペイロード処理実装
-
-        }
-
-    } catch (JSONException e) {
-        //エラー処理
-    } catch (ParseException e) {
-        e.printStackTrace();
-    }
-}
-```
-
----
-## プッシュ通知を送信：ペイロード
-### プッシュ通知⑦：アプリがプッシュ通知からデータを取得する
-
-* ペイロード処理実装します
-* 指定した時間でローカルプッシュ通知を表示させます。
-
-```java
-//ペイロード処理実装
-// 変換対象の日付文字列
-String dateStr = json.getString("deliveryTime");
-String message = json.getString("message");
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-// Date型変換
-Date formatDate = sdf.parse(dateStr);
-long triggerlMilli = formatDate.getTime();
-
-//Local notification trigger
-AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
-notificationIntent.addCategory("android.intent.category.DEFAULT");
-notificationIntent.putExtra("message", message);
-
-PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerlMilli , broadcast);
-```
-
-
----
-## プッシュ通知を送信：ペイロード
-### 動作確認(6)ペイロード（アプリ起動時）
-
-* 実機でアプリをビルドします
-* 起動し、下記ログを確認します
-
-```text
-端末情報を保存成功しました。
-```
-
-* そのままアプリを起動した状態にします
-
----
-## プッシュ通知を送信：ペイロード
-### 動作確認(6)ペイロード（アプリ起動時）
-
-* プッシュ通知に設定するJSON形式のデータを作成します
- * JSONデータに設定する時間は、今から__５分以上未来の時間__に変更してください
- * JSONデータに設定するメッセージは、自由に変更してください
- ```text
- {"deliveryTime":"2016-09-29 17:00:00", "message":"タイムセールスタート！"}
- ```
- * 作成したらコピーをしておいてください
-
----
-## プッシュ通知を送信：ペイロード
-### 動作確認(6)ペイロード（アプリ起動時）
-
-* プッシュ通知を作成します
- * メッセージを入力が無い場合、サイレントプッシュとして送られます
- * 「JSON」に作成したJSONデータを貼り付けます
-
-.center[
-![動作確認⑥ペイロード1](readme-image/動作確認⑥ペイロード1.png)
-]
-
----
-## プッシュ通知を送信：ペイロード
-### 動作確認(6)ペイロード（アプリ起動時）
-
-* プッシュ通知を送信します
-* プッシュ通知を受信（サイレント）すると次のログが表示されます
-
-```text
-ペイロードを取得しました！
-```
-
-* 指定時間にプッシュ通知が表示されることを確認してください
-
-.footnote[
-[エラーコード一覧](http://mb.cloud.nifty.com/doc/current/rest/common/error.html#REST%20API%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
-]
----
-## プッシュ通知を送信：ペイロード
-### 動作確認(6)ペイロード（非起動時）
-
-* アプリを閉じます
-* 再びプッシュ通知を作成します
-
-.center[
-![動作確認⑥ペイロード2](readme-image/動作確認⑥ペイロード2.png)
-]
-
----
-## プッシュ通知を送信：ペイロード
-### 動作確認(6)ペイロード（非起動時）
-
-* アプリが起動していないので、サイレントプッシュでは気付いてもらえません
-* アプリを起動してもらう内容でプッシュ通知を作成します
- * メッセージ　例）`明日PM5時よりタイムセールを行います！`
-* JSON形式のデータを貼り付けます
- * JSONデータ作成　例）明日午後5時を設定
- ```text
- {"deliveryTime":"2016-09-30 17:00:00", "message":"タイムセールスタート！"}
- ```
- * 時間は今から５分以上未来の時間に変更してください
-
----
-## プッシュ通知を送信：ペイロード
-### 動作確認(6)ペイロード（非起動時）
-
-* プッシュ通知を受信したら、プッシュ通知からアプリを起動します
-* 起動時にデータを取得します
- * １度起動してあればアプリは閉じてもOKです
-* 指定時間にプッシュ通知が表示されることを確認してください
-
----
-layout: true
-class: center, middle, inverse_sub
----
-# まとめ
-
----
-layout: false
 ## まとめ
 ### 学んだこと
 
 * mBaaSの各機能を使用してアプリ作成方法を学んだ！
- * 会員管理機能
- * データストア
- * ファイルストア
- * プッシュ通知
+  * 会員管理機能・データストア・ファイルストア・プッシュ通知をマスター◎
 * プッシュ通知の活用方法がわかった！
- * セグメント配信
- * リッチプッシュ
- * ペイロード
+  * 絞り込み配信・リッチプッシュをマスター◎
+
 
 ---
 ## 参考
 
-* 開催中の[セミナー](https://ncmb.doorkeeper.jp/)のご案内
- * 随時新しいセミナーを実施していきますのでぜひチェックしてください！
+* 開催中の[セミナー](http://mb.cloud.nifty.com/seminar.htm)のご案内
 * ハンズオン内容が実装された完全版プロジェクト
- * __[AndroidAdvancePush【完成版】](https://github.com/ncmbadmin/AndroidAdvancePush/archive/master.zip)__
-* コードは[GitHub](https://github.com/ncmbadmin/AndroidAdvancePush)に公開しています
- * __master__：完成版
- * __handson__：セミナー版
+  * [MonacaAdvancePush【完成版】](https://github.com/ncmbadmin/MonacaAdvancePush/archive/full_version.zip)
+* コードはGitHubに公開しています
+  * full_version：完成版
+  * handson_version：セミナー版
