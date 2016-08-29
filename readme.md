@@ -976,7 +976,7 @@ AFTER
     // ユーザー情報を更新
     currentLoginUser.update()
                     .then(function(currentLoginUser) {
-                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+                            // 【mBaaS：プッシュ通知③】installationにユーザー情報を紐づける
                             alert("お気に入り情報更新に成功しました");
                             showFavorite();
                     })
