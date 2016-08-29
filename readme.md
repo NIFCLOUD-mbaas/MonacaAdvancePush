@@ -907,9 +907,7 @@ AFTER
 ## Shop情報の設定
 ### 動作確認(3)会員情報登録とShop情報表示
 
-![test_new1.png](https://qiita-image-store.s3.amazonaws.com/0/18698/dbcd7bb5-5ebb-9330-7795-3aaeb2646879.png)
-
-
+![お気に入り機能１.png](readme-image/お気に入り機能１.png)
 
 ---
 ## お気に入り登録機能の作成
@@ -930,9 +928,7 @@ AFTER
 ## お気に入り登録機能の作成
 ### お気に入り機能について
 
-![favorite1.png](https://qiita-image-store.s3.amazonaws.com/0/18698/38be6f3e-31bc-612e-12a0-2e2cee50f7f3.png)
-
-
+![お気に入り機能２.png](readme-image/お気に入り機能２.png)
 
 ---
 ## お気に入り登録機能の作成
@@ -1031,7 +1027,6 @@ AFTER
                     });
 ```
 
-
 ---
 ## お気に入り登録機能の作成
 ### 動作確認(4)お気に入り情報登録・更新
@@ -1046,9 +1041,7 @@ AFTER
 ## お気に入り登録機能の作成
 ### 動作確認(4)お気に入り情報登録・更新
 
-![favorite_check.png](https://qiita-image-store.s3.amazonaws.com/0/18698/81769caa-e34f-a192-6730-8704ffbfe165.png)
-
-
+![お気に入り機能３.png](readme-image/お気に入り機能３.png)
 
 ---
 ## プッシュ通知を送信
@@ -1066,8 +1059,7 @@ AFTER
 
 * プッシュ通知の許可とAPNsの証明書(p12形式)のアップロードを行います
 
-![mBaaSプッシュ通知設定.png](https://qiita-image-store.s3.amazonaws.com/0/112032/7a2054e1-9469-858b-f8d7-4792e7469e1b.png)
-
+![mBaaSプッシュ通知設定(iOS).png](readme-image/mBaaSプッシュ通知設定(iOS).png)
 
 ---
 ## プッシュ通知を送信
@@ -1075,9 +1067,7 @@ AFTER
 
 * プッシュ通知の許可とAPIキーの設定を行います
 
-![android_push.png](https://qiita-image-store.s3.amazonaws.com/0/18698/82e2d98d-6999-90b2-e4a3-413f79e60779.png)
-
-
+![mBaaSプッシュ通知設定(Android).png](readme-image/mBaaSプッシュ通知設定(Android).png)
 
 ---
 ## プッシュ通知を送信
@@ -1134,8 +1124,7 @@ AFTER
 
 * Androidの場合、`PROJECT_NUMBER` を設定します
 
-![androidprojnum.png](https://qiita-image-store.s3.amazonaws.com/0/18698/78297862-ca99-f2a1-1bed-bf677de9ddbd.png)
-
+![androidprojnum.png](readme-image/androidprojnum.png)
 
 ---
 
@@ -1329,7 +1318,7 @@ if(currentInstallation ){
 ## プッシュ通知を送信①セグメント配信
 ### 動作確認(5)mBaaS準備
 
-![favorite.png](https://qiita-image-store.s3.amazonaws.com/0/18698/a786c67e-3eea-99ce-96d8-6f43c534a6ef.png)
+![お気に入り機能４.png](readme-image/お気に入り機能４.png)
 
 ---
 ## プッシュ通知を送信①セグメント配信
