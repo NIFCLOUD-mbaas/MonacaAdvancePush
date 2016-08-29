@@ -2,7 +2,7 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-# <span style="font-size: 30%">【Monaca編】ニフティクラウドmobile backend レベルアップセミナー</span><br>### クーポン配信アプリ<br>を作ろう！### </span>
+# <span style="font-size: 30%">【Monaca編】ニフティクラウドmobile backend レベルアップセミナー</span><br>クーポン配信アプリ<br>を作ろう！</span>
 
 @ncmbadmin
 
@@ -76,8 +76,8 @@ layout: false
 ### サービス紹介
 
 * スマホアプリで汎用的に実装される機能を、クラウドサービスとして提供しているサービスです
- * 通称「mBaaS」と呼びます
-* Monaca環境も対応しており、JavascriptSDKを利用することで上記の機能簡単実装できます。
+ * 通称「mBaaS」
+* Monaca環境も対応しており、JavascriptSDKを利用することで上記の機能を簡単に実装できます
 
 .center[
 ![mBaaS紹介](readme-image/mBaaS紹介.png)
@@ -106,7 +106,7 @@ var ncmb = new NCMB("YOUR_APPLICATIONKEY","YOUR_CLIENTKEY");
 ## ニフティクラウド mobile backendとは
 ### Javascript SDKの特徴
 
-* サーバへリクエストする際、Javascriptは基本的に非同期処理として実行されます。
+* サーバへリクエストする際、Javascriptは基本的に非同期処理として実行されます
 * 同期処理と非同期処理
  * 同期処理はその処理が完了するまで、次の処理が実行されません
  * 非同期処理はバックグラウンドで処理を実行し、次の処理を実行します(Javascript)
@@ -115,10 +115,10 @@ var ncmb = new NCMB("YOUR_APPLICATIONKEY","YOUR_CLIENTKEY");
 ## ニフティクラウド mobile backendとは
 ### Javascript SDKの特徴
 
-* SDKの代表利用例を紹介します。
+* SDKの代表利用例を紹介します
     * オブジェクトを登録する
     * Promise形式で実装されています.
-    * then, catchでそれぞれ成功／失敗の時の処理を定義します。
+    * then, catchでそれぞれ成功／失敗の時の処理を定義します
 
 ```js
 // クラスのBookを作成
@@ -174,7 +174,6 @@ book.save()
 1. プッシュ通知の準備
 1. プッシュ通知を送信：セグメント配信
 1. プッシュ通知を送信：リッチプッシュ
-1. プッシュ通知を送信：ペイロード
 ]
 
 ---
@@ -203,7 +202,7 @@ layout: false
 　　　 ### [MonacaAdvancePush](https://github.com/ncmbadmin/MonacaAdvancePush/archive/handson_version.zip)###
 ]
 
-* zipファイルを展開し、[Monaca](https://ja.monaca.io/)でプロジェクトをインポートします。
+* ダウンロードしたzipファイルを、[Monaca](https://ja.monaca.io/)にインポートします
 
 .center[
 ![Monaca](readme-image/monaca1.png)
@@ -232,17 +231,17 @@ layout: false
 
 * `www/js/app.js`を開きます
 * 一番最初に実行される処理を実装します
-* 以下のコメントの直下に初期化コードを追加します。
+* 以下のコメントの直下に初期化コードを追加します
 
 BEFORE
 
-```js:app.js
+```js
  // 【mBaaS】 APIキーの設定とSDKの初期化
 ```
 
 AFTER
 
-```js:app.js
+```js
  // 【mBaaS】 APIキーの設定とSDKの初期化
 var appKey    = "YOUR_APP_KEY";
 var clientKey = "YOUR_CLIENT_KEY";
@@ -272,7 +271,7 @@ layout: false
 ### mBaaSの設定
 
 * 会員管理設定の「メールアドレス/パスワード認証」を許可します
-    * 「許可する」と選択し、保存します。
+    * 「許可する」と選択し、保存します
 
 ![mBaaS会員設定](readme-image/mBaaS会員設定.png)
 
@@ -290,7 +289,7 @@ layout: false
 ## 会員管理機能の作成
 ### 会員管理①：会員登録用メールを要求する[実装済み]
 
-HTMLフォームコードは `index.html`にて確認できます。
+HTMLフォームコードは `index.html`にて確認できます
 
 ```html:index.html
     <!-- [2 SIGNUP] 会員ログインリクエストページ -->
@@ -316,7 +315,7 @@ HTMLフォームコードは `index.html`にて確認できます。
 * `app.js`の`onSignupBtn()`を開きます
 * 会員登録処理を実装します[実装済み]
 
-```js:app.js
+```js
     // 【mBaaS：会員管理①】会員登録用メールを要求する
     var mailaddress = $("#signup_mailaddress").val();
     ncmb.User.requestSignUpEmail(mailaddress)
@@ -338,7 +337,7 @@ HTMLフォームコードは `index.html`にて確認できます。
 
 ```js
             // 会員登録用メールの要求成功時の処理
-            alert("リクエストを送信しました！メールをご確認ください。");
+            alert("リクエストを送信しました！メールをご確認ください");
             $.mobile.changePage('#LoginPage');
 ```
 
@@ -362,7 +361,7 @@ HTMLフォームコードは `index.html`にて確認できます。
 ## 会員管理機能の作成
 ### 会員管理②：メールアドレスとパスワードでログイン<br>[実装済み]
 
-HTMLフォームコードは `index.html`にて確認できます。
+HTMLフォームコードは `index.html`にて確認できます
 
 ```html:index.html
     <!-- [1 LOGIN] ログインページ -->
@@ -390,7 +389,7 @@ HTMLフォームコードは `index.html`にて確認できます。
 * `app.js`の`onLoginBtn()`を開きます
 * ログイン処理を実装します[実装済み]
 
-```js:app.js
+```js
     //【mBaaS：会員管理②】メールアドレスとパスワードでログイン
     // 入力したメールアドレスの値
     var mailaddress = $("#login_mailaddress").val();
@@ -426,6 +425,12 @@ HTMLフォームコードは `index.html`にて確認できます。
                 $.mobile.changePage('#RegisterPage');
             }
 ```
+
+---
+## 会員管理機能の作成
+### 会員管理②：メールアドレスとパスワードでログイン<br>[実装済み]
+
+* それぞれ処理を追記しています
 
 失敗時の処理
 
@@ -505,7 +510,7 @@ HTMLフォームコードは `index.html`にて確認できます。
 ## 会員管理機能の作成
 ### 会員管理③：ユーザー情報更新
 
-HTMLフォームコードは `index.html`にて確認できます。
+HTMLフォームコードは `index.html`にて確認できます
 
 ```html:index.html
   <!-- [3 REGISTER] 会員登録ページ -->
@@ -540,11 +545,11 @@ HTMLフォームコードは `index.html`にて確認できます。
 
 * `app.js`の`onRegisterBtn()`を開きます
 * 初回のみ表示されるユーザー情報登録画面に入力した情報をmBaaSのユーザー情報に追加する処理を実装します
- * 以下のコメントの直下にコードを追加します。
+ * 以下のコメントの直下にコードを追加します
 
 BEFORE
 
-```js:app.js
+```js
      //【mBaaS：会員管理③】ユーザー情報更新-
 ```
 
@@ -555,7 +560,7 @@ BEFORE
 
 AFTER
 
-```js:app.js
+```js
     //【mBaaS：会員管理③】ユーザー情報更新-
     //入力フォームからnickname, prefecture, genderを値セット
     var nickname = $("#reg_nickname").val();
@@ -603,15 +608,15 @@ AFTER
 
 ---
 ## 会員管理機能の作成
-### 動作確認②: ユーザー情報更新
+### 動作確認(2): ユーザー情報更新
 
-* 会員情報を入力し、登録しましょう。
+* 会員情報を入力し、登録しましょう
 
 ![userregister.png](readme-image/userregister.png)
 
 ---
 ## 会員管理機能の作成
-### 動作確認②: ユーザー情報更新
+### 動作確認(2): ユーザー情報更新
 
 * 登録した情報を確認ページでみてみましょう
 
@@ -643,7 +648,7 @@ layout: false
 ## Shop情報の設定
 ### mBaaSにShop情報を用意する（データストア）
 
-ダッシュボードでデータがインポートされていることを確認しましょう。
+ダッシュボードでデータがインポートされていることを確認しましょう
 
 .center[
 ![mBaaS_ShopData](readme-image/mBaaS_ShopData.PNG)
@@ -665,7 +670,7 @@ layout: false
 ## Shop情報の設定
 ### mBaaSにShop情報を用意する（ファイルストア）
 
-* ファイルストアでファイルがアップロードされていることを確認しましょう。
+* ファイルストアでファイルがアップロードされていることを確認しましょう
 
 .center[
 ![UploadImage](readme-image/UploadImage.png)
@@ -676,7 +681,7 @@ layout: false
 ## Shop情報の設定
 ### データストア：「Shop」クラスのデータを取得
 
-* これからデータストアに入っているショップデータの取得を実装していきます。
+* これからデータストアに入っているショップデータの取得を実装していきます
 
 ![mBaaS_ShopData.PNG](readme-image/mBaaS_ShopData.PNG)
 
@@ -685,7 +690,7 @@ layout: false
 ## Shop情報の設定
 ### データストア：「Shop」クラスのデータを取得
 
-HTMLフォームコードは `index.html`にて確認できます。
+HTMLフォームコードは `index.html`にて確認できます
 
 ```html:index.html
  <!-- [5 TOP] メインページ -->
@@ -707,13 +712,13 @@ HTMLフォームコードは `index.html`にて確認できます。
 
 BEFORE
 
-```js:app.js
+```js
     //【mBaaS：データストア】「Shop」クラスのデータを取得
 ```
 
 AFTER
 
-```js:app.js
+```js
     // 【mBaaS：データストア】「Shop」クラスのデータを取得
     // 「Shop」クラスのクエリを作成
     var ShopClass = ncmb.DataStore("Shop");
@@ -816,9 +821,9 @@ https://mb.api.cloud.nifty.com/2013-09-01/applications/[アプリケID]/publicFi
 ### ファイルストア：icon画像の取得
 
 * `app.js`の「YOUR_APP_ID」をmBaaSのアプリケーションIDに書き換えます
-* 「ダッシュボード」を選択し、URLから「YOUR_APP_ID」を確認してください。
+* 「ダッシュボード」を選択し、URLから「YOUR_APP_ID」を確認してください
 
-```js:app.js
+```js
 var applicationID = "YOUR_APP_ID";
 ```
 
@@ -836,7 +841,7 @@ var applicationID = "YOUR_APP_ID";
 ## Shop情報の設定
 ### ファイルストア：Shop画面画像の取得
 
-上記同様、ショップ詳細画像の表示を実装します。
+上記同様、ショップ詳細画像の表示を実装します
 
 ![shopscreen.png](readme-image/shopscreen.png)
 
@@ -850,7 +855,7 @@ var applicationID = "YOUR_APP_ID";
 
 BEFORE
 
-```js:app.js
+```js
    // 【mBaaS：ファイルストア②】Shop画像の取得
 ```
 
@@ -860,7 +865,7 @@ BEFORE
 
 AFTER
 
-```js:app.js
+```js
    // 【mBaaS：ファイルストア②】Shop画像の取得
    currentShopId = shopId;
    var shopTmp = shopList[shopId];
@@ -900,11 +905,9 @@ AFTER
 
 ---
 ## Shop情報の設定
-### 動作確認③会員情報登録とShop情報表示
+### 動作確認(3)会員情報登録とShop情報表示
 
-![test_new1.png](https://qiita-image-store.s3.amazonaws.com/0/18698/dbcd7bb5-5ebb-9330-7795-3aaeb2646879.png)
-
-
+![お気に入り機能１.png](readme-image/お気に入り機能１.png)
 
 ---
 ## お気に入り登録機能の作成
@@ -925,9 +928,7 @@ AFTER
 ## お気に入り登録機能の作成
 ### お気に入り機能について
 
-![favorite1.png](https://qiita-image-store.s3.amazonaws.com/0/18698/38be6f3e-31bc-612e-12a0-2e2cee50f7f3.png)
-
-
+![お気に入り機能２.png](readme-image/お気に入り機能２.png)
 
 ---
 ## お気に入り登録機能の作成
@@ -935,7 +936,7 @@ AFTER
 
 * `app.js`の`onUpdateFavoriteBtn()`を開きます
 * mBaaSの会員データとして保持していた「favorite」データを、お気に入り画面で設定したデータに更新する処理を実装します
- * コメントの直下に追加します。
+ * コメントの直下に追加します
 
 ---
 ## お気に入り登録機能の作成
@@ -943,7 +944,7 @@ AFTER
 
 BEFORE
 
-```js:app.js
+```js
     // 【mBaaS：会員管理④】ユーザー情報の更新
 ```
 
@@ -953,7 +954,7 @@ BEFORE
 
 AFTER
 
-```js:app.js
+```js
     // 【mBaaS：会員管理④ユーザー情報の更新
 
     //ONを設定している項目を取得
@@ -971,7 +972,7 @@ AFTER
     // ユーザー情報を更新
     currentLoginUser.update()
                     .then(function(currentLoginUser) {
-                            // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
+                            // 【mBaaS：プッシュ通知③】installationにユーザー情報を紐づける
                             alert("お気に入り情報更新に成功しました");
                             showFavorite();
                     })
@@ -996,7 +997,7 @@ AFTER
 
 BEFORE
 
-```js:app.js
+```js
     // 【mBaaS：会員管理⑤】ユーザー情報の更新
 ```
 
@@ -1006,7 +1007,7 @@ BEFORE
 
 AFTER
 
-```js:app.js
+```js
     // 【mBaaS：会員管理⑤】ユーザー情報の更新
 
     // ログイン中のユーザーのお気に入り情報（favorite）を設定
@@ -1026,10 +1027,9 @@ AFTER
                     });
 ```
 
-
 ---
 ## お気に入り登録機能の作成
-### 動作確認④お気に入り情報登録・更新
+### 動作確認(4)お気に入り情報登録・更新
 
 * ログインをするとトップ画面が表示されます
 * 画面下の「お気に入り」をタップします
@@ -1039,21 +1039,17 @@ AFTER
 
 ---
 ## お気に入り登録機能の作成
-### 動作確認④お気に入り情報登録・更新
+### 動作確認(4)お気に入り情報登録・更新
 
-![favorite_check.png](https://qiita-image-store.s3.amazonaws.com/0/18698/81769caa-e34f-a192-6730-8704ffbfe165.png)
-
-
+![お気に入り機能３.png](readme-image/お気に入り機能３.png)
 
 ---
 ## プッシュ通知を送信
 ### このあとのデバッグについて
-
 * 以下の用意が必要です
  * デバッグ用の実機 (iOS, Android)
  * プッシュ通知用証明書 (iOSの場合)
  * プッシュ通知用APIキー (Androidの場合)
-
 * APIキー、証明書の取得がまだの場合は下記をご参照ください
  * [【サンプル】アプリにプッシュ通知を組み込もう！](https://github.com/NIFTYCloud-mbaas/MonacaPushApp)
 
@@ -1063,8 +1059,7 @@ AFTER
 
 * プッシュ通知の許可とAPNsの証明書(p12形式)のアップロードを行います
 
-![mBaaSプッシュ通知設定.png](https://qiita-image-store.s3.amazonaws.com/0/112032/7a2054e1-9469-858b-f8d7-4792e7469e1b.png)
-
+![mBaaSプッシュ通知設定(iOS).png](readme-image/mBaaSプッシュ通知設定(iOS).png)
 
 ---
 ## プッシュ通知を送信
@@ -1072,9 +1067,7 @@ AFTER
 
 * プッシュ通知の許可とAPIキーの設定を行います
 
-![android_push.png](https://qiita-image-store.s3.amazonaws.com/0/18698/82e2d98d-6999-90b2-e4a3-413f79e60779.png)
-
-
+![mBaaSプッシュ通知設定(Android).png](readme-image/mBaaSプッシュ通知設定(Android).png)
 
 ---
 ## プッシュ通知を送信
@@ -1085,7 +1078,7 @@ AFTER
 
 BEFORE
 
-```js:app.js
+```js
     // 【mBaaS：プッシュ通知①】デバイストークンの取得し、サーバへ登録処理
 ```
 
@@ -1095,7 +1088,7 @@ BEFORE
 
 AFTER
 
-```js:app.js
+```js
     // 【mBaaS：プッシュ通知①】デバイストークンの取得し、サーバへ登録処理
     document.addEventListener("deviceready", function(){
             // デバイストークンを取得してinstallationに登録する
@@ -1121,7 +1114,6 @@ AFTER
                     }
                 );
         	},20000);
-
         },false);
 ```
 
@@ -1130,10 +1122,9 @@ AFTER
 ## プッシュ通知を送信
 ### プッシュ通知①：デバイストークンの取得
 
-* Androidの場合、`app.js`で指定している`PROJECT_NUMBER` を設定します。
+* Androidの場合、`PROJECT_NUMBER` を設定します
 
-![androidprojnum.png](https://qiita-image-store.s3.amazonaws.com/0/18698/78297862-ca99-f2a1-1bed-bf677de9ddbd.png)
-
+![androidprojnum.png](readme-image/androidprojnum.png)
 
 ---
 
@@ -1147,7 +1138,7 @@ AFTER
 
 BEFORE
 
-```js:app.js
+```js
 // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
 alert("会員情報登録に成功");
 //お店一覧画面遷移
@@ -1161,7 +1152,7 @@ showShopList();
 
 AFTER
 
-```js:app.js
+```js
 // 【mBaaS：プッシュ通知②】installationにユーザー情報を紐づける
 if (currentInstallation) {
     // ユーザー情報を設定
@@ -1210,7 +1201,7 @@ if (currentInstallation) {
 
 ```js
 // installation更新失敗時の処理
-alert("installation更新(ユーザー登録)に失敗しました:+error.code)")
+alert("installation更新(ユーザー登録)に失敗しました:)" + error.code);
 ```
 
 ---
@@ -1230,7 +1221,7 @@ alert("installation更新(ユーザー登録)に失敗しました:+error.code)"
 
 BEFORE
 
-```js:app.js
+```js
 // 【mBaaS：プッシュ通知③】installationにユーザー情報を紐づける
 alert("お気に入り情報更新に成功しました");
 showFavorite();
@@ -1243,15 +1234,13 @@ showFavorite();
 
 AFTER
 
-```js:app.js
+```js
 // 【mBaaS：プッシュ通知③】installationにユーザー情報を紐づける
 
 // 更新に成功した場合の処理
 if (currentInstallation) {
-
     // お気に入り情報を設定
     currentInstallation.favorite = array;
-
     // installation情報の更新
     currentInstallation.update()
         .then(function(installation) {
@@ -1262,8 +1251,7 @@ if (currentInstallation) {
         .catch(function(error) {
             // installation更新失敗時の処理
         });                    
-}
-else {
+} else {
     // installation更新成功時の処理
     alert("お気に入り情報更新に成功しました");
     showFavorite();
@@ -1280,7 +1268,7 @@ else {
 
 BEFORE
 
-```js:app.js
+```js
 // 【mBaaS：プッシュ通知④】installationにユーザー情報を紐づける
 alert("お気に入り登録に成功");
 showShopDetail(currentShopId);
@@ -1293,7 +1281,7 @@ showShopDetail(currentShopId);
 
 AFTER
 
-```js:app.js
+```js
 // 【mBaaS：プッシュ通知④】installationにユーザー情報を紐づける
 if(currentInstallation ){
  // お気に入り情報を設定
@@ -1315,43 +1303,43 @@ if(currentInstallation ){
 }                     
 ```
 
-
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑤mBaaS準備
+### 動作確認(5)mBaaS準備
 
 * もう一度会員情報登録画面を表示するため、mBaaSの会員管理画面で「クラスの編集」をクリックします
 * 「nickname」にチェックを入れて上の「削除」ボタンで削除します
 
----
-## プッシュ通知を送信①セグメント配信
-### 動作確認⑤mBaaS準備
-
-![favorite.png](https://qiita-image-store.s3.amazonaws.com/0/18698/a786c67e-3eea-99ce-96d8-6f43c534a6ef.png)
-
-
+.center[
+![動作確認④セグメント0](readme-image/動作確認④セグメント0.png)
+]
 
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
+### 動作確認(5)mBaaS準備
+
+![お気に入り機能４.png](readme-image/お気に入り機能４.png)
+
+---
+## プッシュ通知を送信①セグメント配信
+### 動作確認(6)セグメント配信
 
 * 実機でアプリをビルドします
-* アプリを起動します。
+* アプリを起動します
     * iOSの場合、「プッシュ通知」を許可（Yes）を選択ください
 
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
+### 動作確認(6)セグメント配信
 
-* mBaaSのダッシュボードでは端末が登録さていることを確認します。
+* mBaaSのダッシュボードでは端末が登録さていることを確認します
 .center[
 ![動作確認④installation追加](readme-image/動作確認④installation追加.png)
 ]
 
-
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
+### 動作確認(6)セグメント配信
 
 * 以下のユーザーに絞り込んでプッシュ通知を配信してみましょう
  * shopBをお気に入り登録しているユーザー
@@ -1359,7 +1347,7 @@ if(currentInstallation ){
 
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
+### 動作確認(6)セグメント配信
 
 * mBaaSのダッシュボードからShopクラスのデータを開きます
 * shopBの「objectId」をコピーします
@@ -1370,12 +1358,10 @@ if(currentInstallation ){
 
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
-
+### 動作確認(6)セグメント配信
 * プッシュ通知を作成します
 * メッセージを入力します
  * 例：ShopBセール開催中！
-
 * 「iOS端末に配信する」にチェックを入れます
 * 「配信端末」を設定します
 
@@ -1385,7 +1371,7 @@ if(currentInstallation ){
 
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
+### 動作確認(6)セグメント配信
 
 * 「installationクラスからの絞込み」を選択します
 * 絞り込み設定をします
@@ -1397,7 +1383,7 @@ if(currentInstallation ){
 
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
+### 動作確認(6)セグメント配信
 
 * 「１端末に向けて送信されます」と表示されればOKです
 * 「プッシュ通知を作成する」をクリックします
@@ -1409,7 +1395,7 @@ if(currentInstallation ){
 
 ---
 ## プッシュ通知を送信①セグメント配信
-### 動作確認⑥セグメント配信
+### 動作確認(6)セグメント配信
 
 * いろいろなパターンで送ってみましょう！
  * 別のショップを絞り込み
@@ -1424,7 +1410,7 @@ if(currentInstallation ){
 
 * プッシュ通知登録時にURLを指定することで、開封時にWebビューを表示できる機能です
 * プッシュ通知開封でアプリが起動するときに表示されます
- * アプリ起動中には表示されませんので閉じる必要があります（仕様）
+ * アプリ起動中には表示されませんので閉じる必要があります（iOS仕様）
 
 
 ---
@@ -1441,14 +1427,13 @@ if(currentInstallation ){
 ## プッシュ通知を送信②リッチプッシュ
 ### リッチプッシュについて
 
-* リンクは以下のように作成できます
+* リンクはファイルストアで画像を選択すると表示されます
+ * セール画像を１つ選択し、リンクをコピーしてください
+.center[
+![sale_image](readme-image/公開ファイルURL.png)
+]
 
-```
-https://mb.api.cloud.nifty.com/2013-09-01/applications/アプリケーションID/publicFiles/ファイル名
-```
 
-  * 「アプリケーションID」はアプリIDを指定します
-  * 「ファイル名」はセール画像の名前を指定します
 
 ---
 ## プッシュ通知を送信②リッチプッシュ
@@ -1462,7 +1447,7 @@ https://mb.api.cloud.nifty.com/2013-09-01/applications/アプリケーションI
 
 ---
 ## プッシュ通知を送信②リッチプッシュ
-### 動作確認⑦リッチプッシュ
+### 動作確認(7)リッチプッシュ
 
 * 実機でアプリをビルドします
 * アプリを一旦完全に閉じます
@@ -1472,7 +1457,7 @@ https://mb.api.cloud.nifty.com/2013-09-01/applications/アプリケーションI
 
 ---
 ## プッシュ通知を送信②リッチプッシュ
-### 動作確認⑦リッチプッシュ
+### 動作確認(7)リッチプッシュ
 
 .center[
 ![動作確認⑤リッチプッシュ](readme-image/動作確認⑤リッチプッシュ.png)
