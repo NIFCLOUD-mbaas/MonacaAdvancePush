@@ -1059,7 +1059,7 @@ AFTER
 
 * プッシュ通知の許可とAPNsの証明書(p12形式)のアップロードを行います
 
-![mBaaSプッシュ通知設定(iOS).png](readme-image/mBaaSプッシュ通知設定(iOS).png)
+![mBaaSプッシュ通知設定(iOS).png](readme-image/mBaaSプッシュ通知設定iOS.png)
 
 ---
 ## プッシュ通知を送信
@@ -1067,7 +1067,7 @@ AFTER
 
 * プッシュ通知の許可とAPIキーの設定を行います
 
-![mBaaSプッシュ通知設定(Android).png](readme-image/mBaaSプッシュ通知設定(Android).png)
+![mBaaSプッシュ通知設定(Android).png](readme-image/mBaaSプッシュ通知設定Android.png)
 
 ---
 ## プッシュ通知を送信
@@ -1089,32 +1089,29 @@ BEFORE
 AFTER
 
 ```js
-    // 【mBaaS：プッシュ通知①】デバイストークンの取得し、サーバへ登録処理
-    document.addEventListener("deviceready", function(){
-            // デバイストークンを取得してinstallationに登録する
-            window.NCMB.monaca.setDeviceToken(
-                appKey,
-                clientKey,
-                project_number
-            );
-
-            setTimeout(function(){
-                //currentInstallationの情報を取得
-                window.NCMB.monaca.getInstallationId(
-                    function(id) {
-                        //JavaScript SDKのInstallationクラスを利用して端末情報を取得
-                        ncmb.Installation.fetchById(id)
-                                         .then(function(installation){
-                                            //サーバから取得した結果をcurrentInstallationに保存
-                                            currentInstallation = installation;
-                                          })
-                                         .catch(function(err){
-                                            // エラー処理
-                                          });
-                    }
-                );
-        	},20000);
-        },false);
+// 【mBaaS：プッシュ通知①】デバイストークンの取得し、サーバへ登録処理
+document.addEventListener("deviceready", function(){
+// デバイストークンを取得してinstallationに登録する
+    window.NCMB.monaca.setDeviceToken(
+        appKey,
+        clientKey,
+        project_number
+    );
+    setTimeout(function(){
+        //currentInstallationの情報を取得
+        window.NCMB.monaca.getInstallationId(function(id) {
+            //JavaScript SDKのInstallationクラスを利用して端末情報を取得
+            ncmb.Installation.fetchById(id)
+                             .then(function(installation){
+                                 //サーバから取得した結果をcurrentInstallationに保存
+                                 currentInstallation = installation;
+                             })
+                             .catch(function(err){
+                                 // エラー処理
+                             });
+        });
+    },20000);
+},false);
 ```
 
 ---
