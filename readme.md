@@ -61,17 +61,6 @@ layout: false
 ]
 
 ---
-## 今回のハンズオンセミナーについて
-### 学ぶ内容
-
-「mBaaS Shop List」アプリの作成を通して、アクティブユーザー率を上げる<br>
-効率的なプッシュ通知の組み込み方を学びます<br><br>
-
-.center[
-![ペイロード](readme-image/seminar/ペイロード.png)
-]
-
----
 ## ニフティクラウド mobile backendとは
 ### サービス紹介
 
@@ -637,7 +626,7 @@ layout: false
 * 以下の手順でデータストアに「Shop」という名前のクラスを作成します
  * ニフティクラウド mobile backendのダッシュボードから「データストア」を開く
  * 「＋作成▼」ボタンをクリックし、「インポート」をクリックします
- * クラス名に「### Shop### 」と入力します
+ * クラス名に「Shop」と入力します
  * ダウンロードしたプロジェクトにあるSettingフォルダ内の「### Shop.json### 」を選択してアップロードします
 
 .center[
@@ -839,7 +828,7 @@ var applicationID = "YOUR_APP_ID";
 
 ---
 ## Shop情報の設定
-### ファイルストア：Shop画面画像の取得
+### ファイルストア：Shop画面の画像の取得
 
 上記同様、ショップ詳細画像の表示を実装します
 
@@ -1050,6 +1039,12 @@ AFTER
  * デバッグ用の実機 (iOS, Android)
  * プッシュ通知用証明書 (iOSの場合)
  * プッシュ通知用APIキー (Androidの場合)
+
+```
+ ※ Androidの場合、既にGCMにてプロジェクトの作成・GCMの有効化設定を終えている場合は、
+ APIキーは継続してご利用いただくことが可能です。新規の場合、FCMで作成する必要があります。
+```
+
 * APIキー、証明書の取得がまだの場合は下記をご参照ください
  * [【サンプル】アプリにプッシュ通知を組み込もう！](https://github.com/NIFTYCloud-mbaas/MonacaPushApp)
 
@@ -1095,7 +1090,7 @@ document.addEventListener("deviceready", function(){
     window.NCMB.monaca.setDeviceToken(
         appKey,
         clientKey,
-        project_number
+        sender_id
     );
     setTimeout(function(){
         //currentInstallationの情報を取得
@@ -1119,7 +1114,7 @@ document.addEventListener("deviceready", function(){
 ## プッシュ通知を送信
 ### プッシュ通知①：デバイストークンの取得
 
-* Androidの場合、`PROJECT_NUMBER` を設定します
+* Androidの場合、`SENDER_ID` を設定します
 
 ![androidprojnum.png](readme-image/androidprojnum.png)
 
