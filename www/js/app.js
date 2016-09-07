@@ -1,5 +1,5 @@
 var applicationID = "YOUR_APP_ID";
-var project_number = "PROJECT_NUMBER"; //アンドロイド端末のみ
+var sender_id = "SENDER_ID"; //アンドロイド端末のみ
 
  // 【mBaaS】 APIキーの設定とSDKの初期化
 
@@ -82,7 +82,7 @@ function onLoginBtn()
         .catch(function(error) {
             // ログイン失敗時の処理
             alert("ログイン失敗！次のエラー発生: " + error);
-        });    
+        });
 
 }
 
