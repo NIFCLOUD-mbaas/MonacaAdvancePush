@@ -1,5 +1,4 @@
 var applicationID = "YOUR_APP_ID";
-var project_number = "PROJECT_NUMBER"; //アンドロイド端末のみ
 
  // 【mBaaS】 APIキーの設定とSDKの初期化
 var appKey    = "YOUR_APP_KEY";
@@ -8,7 +7,7 @@ var clientKey = "YOUR_CLIENT_KEY";
 var ncmb = new NCMB(appKey,clientKey);
 
 //公開ファイルURL
-var publicFileUrl = "https://mb.api.cloud.nifty.com/2013-09-01/applications/" + applicationID + "/publicFiles/";
+var publicFileUrl = "https://mbaas.api.nifcloud.com/2013-09-01/applications/" + applicationID + "/publicFiles/";
 
 //現在の端末情報
 var currentInstallation;
@@ -28,28 +27,28 @@ $(function() {
     // 【mBaaS：プッシュ通知①】デバイストークンの取得し、サーバへ登録処理
     document.addEventListener("deviceready", function(){
             // デバイストークンを取得してinstallationに登録する
-            window.NCMB.monaca.setDeviceToken(
-                appKey,
-                clientKey,
-                project_number
+            NCMB.monaca.setDeviceToken(
+            appKey,
+            clientKey
             );
 
-            setTimeout(function(){
-                //currentInstallationの情報を取得
-                window.NCMB.monaca.getInstallationId(
-                    function(id) {
-                        //JavaScript SDKのInstallationクラスを利用して端末情報を取得
-                        ncmb.Installation.fetchById(id)
-                                         .then(function(installation){
-                                            //サーバから取得した結果をcurrentInstallationに保存
-                                            currentInstallation = installation;
-                                          })
-                                         .catch(function(err){
-                                            // エラー処理
-                                          });
-                    }
-                );
-        	},20000);
+            // Set callback for push notification data.
+            NCMB.monaca.setHandler(function(jsonData){
+                alert("callback :::" + JSON.stringify(jsonData));
+            });
+
+            // Get installation ID.
+            NCMB.monaca.getInstallationId(function(installationId){
+                // something
+            });
+
+            // Get receipt status
+            NCMB.monaca.getReceiptStatus(function(status){
+                // status = true or false
+            });
+
+            // Set receipt status
+            NCMB.monaca.setReceiptStatus(true);
         },false);
 });
 
