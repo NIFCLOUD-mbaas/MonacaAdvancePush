@@ -38,9 +38,20 @@ $(function() {
             });
 
             // Get installation ID.
-            NCMB.monaca.getInstallationId(function(installationId){
-                // something
-            });
+            setTimeout(function(){
+            //currentInstallationの情報を取得
+            window.NCMB.monaca.getInstallationId(function(id) {
+                //JavaScript SDKのInstallationクラスを利用して端末情報を取得
+                ncmb.Installation.fetchById(id)
+                                .then(function(installation){
+                                    //サーバから取得した結果をcurrentInstallationに保存
+                                    currentInstallation = installation;
+                                })
+                                .catch(function(err){
+                                    // エラー処理
+                                });
+                 });
+            },20000);
 
             // Get receipt status
             NCMB.monaca.getReceiptStatus(function(status){
