@@ -16,7 +16,7 @@ layout: false
 [ホームページ](https://mbaas.nifcloud.com/about.htm)右上にある「無料登録」ボタンをクリックして、<br>
 アカウント登録を実施してください
 
-.center[<img src="readme-image/mBaaS検索.png" alt="mBaaS検索" width=200px">]
+.center[<img src="readme-image/mBaaS検索.png" alt="mBaaS検索" width="200px">]
 
 .center[<img src="readme-image/mBaaS無料登録.png" alt="mBaaS無料登録" width="400px">]
 
