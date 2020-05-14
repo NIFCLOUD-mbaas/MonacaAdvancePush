@@ -2,7 +2,7 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-# <span style="font-size: 30%">【Monaca編】ニフティクラウドmobile backend レベルアップセミナー</span><br>クーポン配信アプリ<br>を作ろう！</span>
+# <span style="font-size: 30%">【Monaca編】ニフクラmobile backend レベルアップセミナー</span><br>クーポン配信アプリ<br>を作ろう！</span>
 
 @ncmbadmin
 
@@ -12,13 +12,20 @@ class: center, middle, inverse
 ---
 layout: false
 ## 事前準備
-ニフティクラウドmobile backendのアカウント登録がお済みでない方は、<br>
-[ホームページ](http://mb.cloud.nifty.com/about.htm)右上にある「無料登録」ボタンをクリックして、<br>
+ニフクラmobile backendのアカウント登録がお済みでない方は、<br>
+[ホームページ](https://mbaas.nifcloud.com/about.htm)右上にある「無料登録」ボタンをクリックして、<br>
 アカウント登録を実施してください
 
 ![mBaaS検索](readme-image/mBaaS検索.png)
 
 ![mBaaS無料登録](readme-image/mBaaS無料登録.png)
+-----
+## 事前準備
+### 動作環境
+* iOS: OS ver.10.0 ~ ver.13.4
+* 端末: iphone 8 (13.4)
+* Xcode: ver.11.4 
+* MacOS: ver.10.15.4 
 
 ---
 ## 今回のハンズオンセミナーについて
@@ -61,7 +68,7 @@ layout: false
 ]
 
 ---
-## ニフティクラウド mobile backendとは
+## ニフクラ mobile backendとは
 ### サービス紹介
 
 * スマホアプリで汎用的に実装される機能を、クラウドサービスとして提供しているサービスです
@@ -73,15 +80,15 @@ layout: false
 ]
 
 ---
-## ニフティクラウド mobile backendとは
+## ニフクラ mobile backendとは
 ### Javascript SDKの特徴
 
 * SDKのインストールが必要　（済み）
   * 今回は実装済み
-  * 参考：[クイックスタート](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_monaca.html)
+  * 参考：[クイックスタート](https://mbaas.nifcloud.com/doc/current/introduction/quickstart_monaca.html)
 
 ---
-## ニフティクラウド mobile backendとは
+## ニフクラ mobile backendとは
 ### Javascript SDKの特徴
 
 * SDKの初期化処理が必要です
@@ -92,7 +99,7 @@ var ncmb = new NCMB("YOUR_APPLICATIONKEY","YOUR_CLIENTKEY");
 ```
 
 ---
-## ニフティクラウド mobile backendとは
+## ニフクラ mobile backendとは
 ### Javascript SDKの特徴
 
 * サーバへリクエストする際、Javascriptは基本的に非同期処理として実行されます
@@ -101,7 +108,7 @@ var ncmb = new NCMB("YOUR_APPLICATIONKEY","YOUR_CLIENTKEY");
  * 非同期処理はバックグラウンドで処理を実行し、次の処理を実行します(Javascript)
 
 ---
-## ニフティクラウド mobile backendとは
+## ニフクラ mobile backendとは
 ### Javascript SDKの特徴
 
 * SDKの代表利用例を紹介します
@@ -188,7 +195,7 @@ layout: false
 
 下記リンクをクリックして、ZIPファイルでダウンロードしてください▼<br>
 .size_large[
-　　　 ### [MonacaAdvancePush](https://github.com/ncmbadmin/MonacaAdvancePush/archive/handson_version.zip)###
+　　　 ### [MonacaAdvancePush](https://github.com/NIFCLOUD-mbaas/MonacaPushApp/archive/handson_version.zip)###
 ]
 
 * ダウンロードしたzipファイルを、[Monaca](https://ja.monaca.io/)にインポートします
@@ -210,7 +217,7 @@ layout: false
 ## ハンズオンの準備
 ### mBaaSの準備
 
-* [mBaaS](http://mb.cloud.nifty.com)にログインしてアプリを作成します
+* [mBaaS](https://mbaas.nifcloud.com)にログインしてアプリを作成します
 
 ![mBaaSアプリ作成](readme-image/mBaaSアプリ作成.png)
 
@@ -484,7 +491,7 @@ HTMLフォームコードは `index.html`にて確認できます
 ![動作確認①会員登録完了](readme-image/動作確認①会員登録完了.png)
 ]
 .footnote[
-[エラーコード一覧](http://mb.cloud.nifty.com/doc/current/rest/common/error.html#REST%20API%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+[エラーコード一覧](https://mbaas.nifcloud.com/doc/current/rest/common/error.html#REST%20APIのエラーコードについて)
 ]
 
 ---
@@ -624,7 +631,7 @@ layout: false
 ### mBaaSにShop情報を用意する（データストア）
 
 * 以下の手順でデータストアに「Shop」という名前のクラスを作成します
- * ニフティクラウド mobile backendのダッシュボードから「データストア」を開く
+ * ニフクラ mobile backendのダッシュボードから「データストア」を開く
  * 「＋作成▼」ボタンをクリックし、「インポート」をクリックします
  * クラス名に「Shop」と入力します
  * ダウンロードしたプロジェクトにあるSettingフォルダ内の「### Shop.json### 」を選択してアップロードします
@@ -798,7 +805,7 @@ AFTER
 * ファイルストアで公開ファイルURLを確認できます
 
 ```
-https://mb.api.cloud.nifty.com/2013-09-01/applications/[アプリケID]/publicFiles/[ファイル名]
+https://mbaas.api.nifcloud.com/2013-09-01/applications/[アプリケID]/publicFiles/[ファイル名]
 ```
 
 .center[
@@ -889,7 +896,7 @@ AFTER
 ![動作確認②ユーザー情報追加](readme-image/動作確認②ユーザー情報追加.png)
 ]
 .footnote[
-[エラーコード一覧](http://mb.cloud.nifty.com/doc/current/rest/common/error.html#REST%20API%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+[エラーコード一覧](https://mbaas.nifcloud.com/doc/current/rest/common/error.html#REST%20APIのエラーコードについて)
 ]
 
 ---
@@ -1046,7 +1053,7 @@ AFTER
 ```
 
 * APIキー、証明書の取得がまだの場合は下記をご参照ください
- * [【サンプル】アプリにプッシュ通知を組み込もう！](https://github.com/NIFTYCloud-mbaas/MonacaPushApp)
+ * [【サンプル】アプリにプッシュ通知を組み込もう！](https://github.com/NIFCLOUD-mbaas/MonacaPushApp)
 
 ---
 ## プッシュ通知を送信
@@ -1469,9 +1476,9 @@ if(currentInstallation ){
 ---
 ## 参考
 
-* 開催中の[セミナー](http://mb.cloud.nifty.com/seminar.htm)のご案内
+* 開催中の[セミナー](http://mbaas.nifcloud.com/seminar.html)のご案内
 * ハンズオン内容が実装された完全版プロジェクト
-  * [MonacaAdvancePush【完成版】](https://github.com/ncmbadmin/MonacaAdvancePush/archive/full_version.zip)
+  * [MonacaAdvancePush【完成版】](https://github.com/NIFCLOUD-mbaas/MonacaPushApp/archive/full_version.zip)
 * コードはGitHubに公開しています
   * full_version：完成版
   * handson_version：セミナー版
