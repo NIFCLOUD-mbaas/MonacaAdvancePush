@@ -16,12 +16,11 @@ layout: false
 [ホームページ](https://mbaas.nifcloud.com/about.htm)右上にある「無料登録」ボタンをクリックして、<br>
 アカウント登録を実施してください
 
-.center[<img src="readme-image/mBaaS検索.png" alt="mBaaS検索" width="450px">]
+.center[<img src="readme-image/mBaaS検索.png" alt="mBaaS検索" width=200px">]
 
-.center[<img src="readme-image/mBaaS無料登録.png" alt="mBaaS無料登録" width="450px">]
+.center[<img src="readme-image/mBaaS無料登録.png" alt="mBaaS無料登録" width="400px">]
 
------
-## 事前準備
+## 動作環境
 * iOS: OS ver.10.0 ~ ver.13.4
 * 端末: iphone 8 (13.4)
 * Xcode: ver.11.4 
