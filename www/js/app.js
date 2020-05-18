@@ -1,11 +1,10 @@
 var applicationID = "YOUR_APP_ID";
-var sender_id = "SENDER_ID"; //アンドロイド端末のみ
 
  // 【mBaaS】 APIキーの設定とSDKの初期化
 
 
 //公開ファイルURL
-var publicFileUrl = "https://mb.api.cloud.nifty.com/2013-09-01/applications/" + applicationID + "/publicFiles/";
+var publicFileUrl = "https://mbaas.api.nifcloud.com/2013-09-01/applications/" + applicationID + "/publicFiles/";
 
 //現在の端末情報
 var currentInstallation;
